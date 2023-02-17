@@ -1,0 +1,298 @@
+{
+  "name": "layton-watchface",
+  "author": "robinfire110",
+  "version": "1.2.0",
+  "keywords": [
+    "pebble-app"
+  ],
+  "private": true,
+  "dependencies": {
+    "pebble-clay": "^1.0.4"
+  },
+  "pebble": {
+    "displayName": "Professor Layton - Mini London",
+    "uuid": "e0eeae9d-0fb0-4160-95d1-72cad065d85f",
+    "sdkVersion": "3",
+    "enableMultiJS": true,
+    "targetPlatforms": [
+      "basalt",
+      "chalk"
+    ],
+    "watchapp": {
+      "watchface": true
+    },
+    "capabilities": [
+      "configurable"
+    ],
+    "messageKeys": [
+      "VibrateOnDisconnect",
+      "HourMode",
+      "DateFormat",
+      "Character1",
+      "Character2",
+      "Character3",
+      "Character1Spoiler",
+      "Character2Spoiler",
+      "Character3Spoiler",
+      "SpoilerMode",
+      "RandomInterval",
+      "RandomIntervalUnit",
+      "ShuffleOptions",
+      "CustomTime"
+    ],
+    "resources": {
+      "media": [
+        {
+          "characterRegex": "[:0-9]",
+          "type": "font",
+          "name": "FONT_LAYTON_48",
+          "file": "fonts/layton_font.ttf",
+          "compatibility": "2.7"
+        },
+        {
+          "characterRegex": "[0-9,:A-Za-z ]",
+          "type": "font",
+          "name": "FONT_LAYTON_16",
+          "file": "fonts/layton_font.ttf",
+          "compatibility": "2.7"
+        },
+        {
+          "menuIcon": "true",
+          "type": "png",
+          "name": "IMAGE_MENU_ICON",
+          "file": "images/menu_icon.png"
+        },
+        {
+          "type": "bitmap",
+          "name": "IMAGE_BACKGROUND",
+          "file": "images/background.png"
+        },
+        {
+          "type": "bitmap",
+          "name": "IMAGE_BACKGROUND_ROUND",
+          "file": "images/background_round.png"
+        },
+        {
+          "type": "bitmap",
+          "name": "IMAGE_BLUETOOTH_ON",
+          "file": "images/bluetooth_on.png"
+        },
+        {
+          "type": "bitmap",
+          "name": "IMAGE_BLUETOOTH_OFF",
+          "file": "images/bluetooth_off.png"
+        },
+        {
+          "type": "bitmap",
+          "name": "IMAGE_ANTON",
+          "file": "images/anton.png",
+          "memoryFormat": "8Bit",
+          "spaceOptimization": "memory"
+        },
+        {
+          "type": "bitmap",
+          "name": "IMAGE_BARTON",
+          "file": "images/barton.png",
+          "memoryFormat": "8Bit",
+          "spaceOptimization": "memory"
+        },
+        {
+          "type": "bitmap",
+          "name": "IMAGE_BOSTRO",
+          "file": "images/bostro.png",
+          "memoryFormat": "8Bit",
+          "spaceOptimization": "memory"
+        },
+        {
+          "type": "bitmap",
+          "name": "IMAGE_CHELMEY",
+          "file": "images/chelmey.png",
+          "memoryFormat": "8Bit",
+          "spaceOptimization": "memory"
+        },
+        {
+          "type": "bitmap",
+          "name": "IMAGE_CLAIRE",
+          "file": "images/claire.png",
+          "memoryFormat": "8Bit",
+          "spaceOptimization": "memory"
+        },
+        {
+          "type": "bitmap",
+          "name": "IMAGE_CLIVE",
+          "file": "images/clive.png",
+          "memoryFormat": "8Bit",
+          "spaceOptimization": "memory"
+        },
+        {
+          "type": "bitmap",
+          "name": "IMAGE_DAHLIA",
+          "file": "images/dahlia.png",
+          "memoryFormat": "8Bit",
+          "spaceOptimization": "memory"
+        },
+        {
+          "type": "bitmap",
+          "name": "IMAGE_DESCOLE",
+          "file": "images/descole.png",
+          "memoryFormat": "8Bit",
+          "spaceOptimization": "memory"
+        },
+        {
+          "type": "bitmap",
+          "name": "IMAGE_DIMITRI",
+          "file": "images/dimitri.png",
+          "memoryFormat": "8Bit",
+          "spaceOptimization": "memory"
+        },
+        {
+          "type": "bitmap",
+          "name": "IMAGE_DON",
+          "file": "images/donpaolo.png",
+          "memoryFormat": "8Bit",
+          "spaceOptimization": "memory"
+        },
+        {
+          "type": "bitmap",
+          "name": "IMAGE_EMMY",
+          "file": "images/emmy.png",
+          "memoryFormat": "8Bit",
+          "spaceOptimization": "memory"
+        },
+        {
+          "type": "bitmap",
+          "name": "IMAGE_FLORA",
+          "file": "images/flora.png",
+          "memoryFormat": "8Bit",
+          "spaceOptimization": "memory"
+        },
+        {
+          "type": "bitmap",
+          "name": "IMAGE_GRANNY",
+          "file": "images/granny.png",
+          "memoryFormat": "8Bit",
+          "spaceOptimization": "memory"
+        },
+        {
+          "type": "bitmap",
+          "name": "IMAGE_KATIA",
+          "file": "images/katia.png",
+          "memoryFormat": "8Bit",
+          "spaceOptimization": "memory"
+        },
+        {
+          "type": "bitmap",
+          "name": "IMAGE_LAYTON_HATLESS",
+          "file": "images/layton_hatless.png",
+          "memoryFormat": "8Bit",
+          "spaceOptimization": "memory"
+        },
+        {
+          "type": "bitmap",
+          "name": "IMAGE_LAYTON_MM",
+          "file": "images/layton_mm.png",
+          "memoryFormat": "8Bit",
+          "spaceOptimization": "memory"
+        },
+        {
+          "type": "bitmap",
+          "name": "IMAGE_LAYTON_NORMAL",
+          "file": "images/layton_normal.png",
+          "memoryFormat": "8Bit",
+          "spaceOptimization": "memory"
+        },
+        {
+          "type": "bitmap",
+          "name": "IMAGE_LAYTON_UF",
+          "file": "images/layton_uf.png",
+          "memoryFormat": "8Bit",
+          "spaceOptimization": "memory"
+        },
+        {
+          "type": "bitmap",
+          "name": "IMAGE_LEON",
+          "file": "images/leon.png",
+          "memoryFormat": "8Bit",
+          "spaceOptimization": "memory"
+        },
+        {
+          "type": "bitmap",
+          "name": "IMAGE_LUKE_LS",
+          "file": "images/luke_ls.png",
+          "memoryFormat": "8Bit",
+          "spaceOptimization": "memory"
+        },
+        {
+          "type": "bitmap",
+          "name": "IMAGE_LUKE_MM",
+          "file": "images/luke_mm.png",
+          "memoryFormat": "8Bit",
+          "spaceOptimization": "memory"
+        },
+        {
+          "type": "bitmap",
+          "name": "IMAGE_LUKE_NORMAL",
+          "file": "images/luke_normal.png",
+          "memoryFormat": "8Bit",
+          "spaceOptimization": "memory"
+        },
+        {
+          "type": "bitmap",
+          "name": "IMAGE_MASKED",
+          "file": "images/masked_gentleman.png",
+          "memoryFormat": "8Bit",
+          "spaceOptimization": "memory"
+        },
+        {
+          "type": "bitmap",
+          "name": "IMAGE_MATTHEW",
+          "file": "images/matthew.png",
+          "memoryFormat": "8Bit",
+          "spaceOptimization": "memory"
+        },
+        {
+          "type": "bitmap",
+          "name": "IMAGE_PUZZLETTE",
+          "file": "images/puzzlette.png",
+          "memoryFormat": "8Bit",
+          "spaceOptimization": "memory"
+        },
+        {
+          "type": "bitmap",
+          "name": "IMAGE_RANDALL_NORMAL",
+          "file": "images/randall_normal.png",
+          "memoryFormat": "8Bit",
+          "spaceOptimization": "memory"
+        },
+        {
+          "type": "bitmap",
+          "name": "IMAGE_RANDALL_UNMASKED",
+          "file": "images/randall_unmasked.png",
+          "memoryFormat": "8Bit",
+          "spaceOptimization": "memory"
+        },
+        {
+          "type": "bitmap",
+          "name": "IMAGE_SCHRADER",
+          "file": "images/schrader.png",
+          "memoryFormat": "8Bit",
+          "spaceOptimization": "memory"
+        },
+        {
+          "type": "bitmap",
+          "name": "IMAGE_STACHEN",
+          "file": "images/stachen.png",
+          "memoryFormat": "8Bit",
+          "spaceOptimization": "memory"
+        },
+        {
+          "type": "bitmap",
+          "name": "IMAGE_SUBJECT3",
+          "file": "images/subject3.png",
+          "memoryFormat": "8Bit",
+          "spaceOptimization": "memory"
+        }
+      ]
+    }
+  }
+}

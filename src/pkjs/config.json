@@ -1,0 +1,227 @@
+[
+  {
+    "type": "heading",
+    "defaultValue": "Professor Layton - Mini London Configuration"
+  },
+  {
+    "type": "text",
+    "defaultValue": "Every puzzle has an answer!"
+  },
+  {
+    "type": "section",
+    "items": [
+      {
+        "type": "heading",
+        "defaultValue": "General Settings"
+      },
+      {
+        "type": "toggle",
+        "messageKey": "VibrateOnDisconnect",
+        "label": "Vibrate on Disconnect",
+        "defaultValue": true
+      },
+      {
+        "type": "select",
+        "messageKey": "HourMode",
+        "defaultValue": 0,
+        "label": "Hour Mode",
+        "description": "Override watch default hour format.",
+        "options": [
+          {
+            "label": "System Default",
+            "value": 0
+          },
+          { 
+            "label": "12-Hour", 
+            "value": 1
+          },
+          { 
+            "label": "24-Hour",
+            "value": 2
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "messageKey": "DateFormat",
+        "defaultValue": 0,
+        "label": "Date Format",
+        "options": [
+          {
+            "label": "Month Day, Year",
+            "value": 0
+          },
+          {
+            "label": "Day Month, Year",
+            "value": 1
+          },
+          {
+            "label": "Year, Month Day",
+            "value": 2
+          },
+          {
+            "label": "MM/DD/YYYY",
+            "value": 3
+          },
+          {
+            "label": "DD/MM/YYYY",
+            "value": 4
+          },
+          {
+            "label": "YYYY/MM/DD",
+            "value": 5
+          },
+          {
+            "label": "None",
+            "value": 6
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "section",
+    "items": [
+      {
+        "type": "heading",
+        "defaultValue": "Character Settings"
+      },
+      {
+        "type": "text",
+        "defaultValue": "Characters are roughly ordered by when they appeared in the series."
+      },
+      {
+        "type": "select",
+        "messageKey": "Character1",
+        "defaultValue": 0,
+        "label": "Character Slot 1",
+        "id": "cs1",
+        "options": [
+          { "label": "Random", "value": -1 }, { "label": "Professor Layton", "value": 0 }, { "label": "Luke Triton", "value": 1 }, { "label": "Flora", "value": 2 }, { "label": "Dahlia Reinhold", "value": 3 }, { "label": "Matthew", "value": 4 }, { "label": "Inspector Chelmey", "value": 5 }, { "label": "Barton", "value": 6 }, { "label": "Stachenscarfen", "value": 8 }, { "label": "Granny Riddleton", "value": 9 }, { "label": "Dr. Schrader", "value": 10 }, { "label": "Katia Anderson", "value": 11 }, { "label": "Dr. Stahngun", "value": 13 }, { "label": "Bostro", "value": 14 }, { "label": "Subject 3", "value": 15 }, { "label": "Puzzlette", "value": 16 }, { "label": "Future Luke", "value": 17 }, { "label": "Professor Layton (Hatless)", "value": 20 }, { "label": "Luke Triton (Last Specter/Spectre's Call)", "value": 21 }, { "label": "Emmy Altava", "value": 22 }, { "label": "Luke Triton (Mircale Mask)", "value": 24 }, { "label": "Masked Gentleman", "value": 25 }, { "label": "Randall Ascot", "value": 26 }, { "label": "Young Layton (Miracle Mask)", "value": 27 }, { "label": "None", "value": 100 }
+        ]
+      },
+      {
+        "type": "select",
+        "messageKey": "Character2",
+        "defaultValue": 1,
+        "label": "Character Slot 2",
+        "id": "cs2",
+        "options": [
+          { "label": "Random", "value": -1 }, { "label": "Professor Layton", "value": 0 }, { "label": "Luke Triton", "value": 1 }, { "label": "Flora", "value": 2 }, { "label": "Dahlia Reinhold", "value": 3 }, { "label": "Matthew", "value": 4 }, { "label": "Inspector Chelmey", "value": 5 }, { "label": "Barton", "value": 6 }, { "label": "Stachenscarfen", "value": 8 }, { "label": "Granny Riddleton", "value": 9 }, { "label": "Dr. Schrader", "value": 10 }, { "label": "Katia Anderson", "value": 11 }, { "label": "Dr. Stahngun", "value": 13 }, { "label": "Bostro", "value": 14 }, { "label": "Subject 3", "value": 15 }, { "label": "Puzzlette", "value": 16 }, { "label": "Future Luke", "value": 17 }, { "label": "Professor Layton (Hatless)", "value": 20 }, { "label": "Luke Triton (Last Specter/Spectre's Call)", "value": 21 }, { "label": "Emmy Altava", "value": 22 }, { "label": "Luke Triton (Mircale Mask)", "value": 24 }, { "label": "Masked Gentleman", "value": 25 }, { "label": "Randall Ascot", "value": 26 }, { "label": "Young Layton (Miracle Mask)", "value": 27 }, { "label": "None", "value": 100 }
+        ]
+      },
+      {
+        "type": "select",
+        "messageKey": "Character3",
+        "defaultValue": 100,
+        "label": "Character Slot 3",
+        "id": "cs3",
+        "options": [
+          { "label": "Random", "value": -1 }, { "label": "Professor Layton", "value": 0 }, { "label": "Luke Triton", "value": 1 }, { "label": "Flora", "value": 2 }, { "label": "Dahlia Reinhold", "value": 3 }, { "label": "Matthew", "value": 4 }, { "label": "Inspector Chelmey", "value": 5 }, { "label": "Barton", "value": 6 }, { "label": "Stachenscarfen", "value": 8 }, { "label": "Granny Riddleton", "value": 9 }, { "label": "Dr. Schrader", "value": 10 }, { "label": "Katia Anderson", "value": 11 }, { "label": "Dr. Stahngun", "value": 13 }, { "label": "Bostro", "value": 14 }, { "label": "Subject 3", "value": 15 }, { "label": "Puzzlette", "value": 16 }, { "label": "Future Luke", "value": 17 }, { "label": "Professor Layton (Hatless)", "value": 20 }, { "label": "Luke Triton (Last Specter/Spectre's Call)", "value": 21 }, { "label": "Emmy Altava", "value": 22 }, { "label": "Luke Triton (Mircale Mask)", "value": 24 }, { "label": "Masked Gentleman", "value": 25 }, { "label": "Randall Ascot", "value": 26 }, { "label": "Young Layton (Miracle Mask)", "value": 27 }, { "label": "None", "value": 100 }
+        ]
+      },
+      {
+        "type": "select",
+        "messageKey": "Character1Spoiler",
+        "defaultValue": 0,
+        "label": "Character Slot 1",
+        "id": "cs1_spoiler",
+        "options": [
+          { "label": "Random", "value": -1 }, { "label": "Professor Layton", "value": 0 }, { "label": "Luke Triton", "value": 1 }, { "label": "Flora Reinhold", "value": 2 }, { "label": "Dahlia Reinhold", "value": 3 }, { "label": "Matthew", "value": 4 }, { "label": "Inspector Chelmey", "value": 5 }, { "label": "Barton", "value": 6 }, { "label": "Don Paolo", "value": 7 }, { "label": "Stachenscarfen", "value": 8 }, { "label": "Granny Riddleton", "value": 9 }, { "label": "Dr. Schrader", "value": 10 }, { "label": "Katia Anderson", "value": 11 }, { "label": "Anton", "value": 12 }, { "label": "Dimitri Allen", "value": 13 }, { "label": "Bostro", "value": 14 }, { "label": "Subject 3", "value": 15 }, { "label": "Puzzlette", "value": 16 }, { "label": "Clive", "value": 17 }, { "label": "Claire", "value": 18 }, { "label": "Young Layton (Unwound Future/Lost Future)", "value": 19 }, { "label": "Professor Layton (Hatless)", "value": 20 }, { "label": "Luke Triton (Last Specter/Spectre's Call)", "value": 21 }, { "label": "Emmy Altava", "value": 22 }, { "label": "Descole", "value": 23 }, { "label": "Luke Triton (Mircale Mask)", "value": 24 }, { "label": "Masked Gentleman", "value": 25 }, { "label": "Randall Ascot", "value": 26 }, { "label": "Young Layton (Miracle Mask)", "value": 27 }, { "label": "Leon Bronev", "value": 28 }, { "label": "Randall Ascot (Unmasked)", "value": 29 }, { "label": "None", "value": 100 }
+        ]
+      },
+      {
+        "type": "select",
+        "messageKey": "Character2Spoiler",
+        "defaultValue": 1,
+        "label": "Character Slot 2",
+        "id": "cs2_spoiler",
+        "options": [
+          { "label": "Random", "value": -1 }, { "label": "Professor Layton", "value": 0 }, { "label": "Luke Triton", "value": 1 }, { "label": "Flora Reinhold", "value": 2 }, { "label": "Dahlia Reinhold", "value": 3 }, { "label": "Matthew", "value": 4 }, { "label": "Inspector Chelmey", "value": 5 }, { "label": "Barton", "value": 6 }, { "label": "Don Paolo", "value": 7 }, { "label": "Stachenscarfen", "value": 8 }, { "label": "Granny Riddleton", "value": 9 }, { "label": "Dr. Schrader", "value": 10 }, { "label": "Katia Anderson", "value": 11 }, { "label": "Anton", "value": 12 }, { "label": "Dimitri Allen", "value": 13 }, { "label": "Bostro", "value": 14 }, { "label": "Subject 3", "value": 15 }, { "label": "Puzzlette", "value": 16 }, { "label": "Clive", "value": 17 }, { "label": "Claire", "value": 18 }, { "label": "Young Layton (Unwound Future/Lost Future)", "value": 19 }, { "label": "Professor Layton (Hatless)", "value": 20 }, { "label": "Luke Triton (Last Specter/Spectre's Call)", "value": 21 }, { "label": "Emmy Altava", "value": 22 }, { "label": "Descole", "value": 23 }, { "label": "Luke Triton (Mircale Mask)", "value": 24 }, { "label": "Masked Gentleman", "value": 25 }, { "label": "Randall Ascot", "value": 26 }, { "label": "Young Layton (Miracle Mask)", "value": 27 }, { "label": "Leon Bronev", "value": 28 }, { "label": "Randall Ascot (Unmasked)", "value": 29 }, { "label": "None", "value": 100 }
+        ]
+      },
+      {
+        "type": "select",
+        "messageKey": "Character3Spoiler",
+        "defaultValue": 100,
+        "label": "Character Slot 3",
+        "id": "cs3_spoiler",
+        "options": [
+          { "label": "Random", "value": -1 }, { "label": "Professor Layton", "value": 0 }, { "label": "Luke Triton", "value": 1 }, { "label": "Flora Reinhold", "value": 2 }, { "label": "Dahlia Reinhold", "value": 3 }, { "label": "Matthew", "value": 4 }, { "label": "Inspector Chelmey", "value": 5 }, { "label": "Barton", "value": 6 }, { "label": "Don Paolo", "value": 7 }, { "label": "Stachenscarfen", "value": 8 }, { "label": "Granny Riddleton", "value": 9 }, { "label": "Dr. Schrader", "value": 10 }, { "label": "Katia Anderson", "value": 11 }, { "label": "Anton", "value": 12 }, { "label": "Dimitri Allen", "value": 13 }, { "label": "Bostro", "value": 14 }, { "label": "Subject 3", "value": 15 }, { "label": "Puzzlette", "value": 16 }, { "label": "Clive", "value": 17 }, { "label": "Claire", "value": 18 }, { "label": "Young Layton (Unwound Future/Lost Future)", "value": 19 }, { "label": "Professor Layton (Hatless)", "value": 20 }, { "label": "Luke Triton (Last Specter/Spectre's Call)", "value": 21 }, { "label": "Emmy Altava", "value": 22 }, { "label": "Descole", "value": 23 }, { "label": "Luke Triton (Mircale Mask)", "value": 24 }, { "label": "Masked Gentleman", "value": 25 }, { "label": "Randall Ascot", "value": 26 }, { "label": "Young Layton (Miracle Mask)", "value": 27 }, { "label": "Leon Bronev", "value": 28 }, { "label": "Randall Ascot (Unmasked)", "value": 29 }, { "label": "None", "value": 100 }
+        ]
+      },
+      {
+        "type": "heading",
+        "defaultValue": "Random Settings"
+      },
+      {
+        "type": "toggle",
+        "messageKey": "ShuffleOptions",
+        "defaultValue": false,
+        "label": "Shuffle Based On Time",
+        "id": "random_options",
+        "description": "Random characters will always shuffle when the watchface is reloaded. By turning this on, you can enable them to shuffle throughout the day based on the time."
+      },
+      {
+        "type": "select",
+        "messageKey": "RandomIntervalUnit",
+        "defaultValue": 1,
+        "id": "random_interval_unit",
+        "group": "random_interval_group",
+        "label": "Unit of time",
+        "options": [
+          {
+            "label": "Minutes",
+            "value": 0
+          },
+          {
+            "label": "Hours",
+            "value": 1
+          }
+        ]
+      },
+      {
+        "type": "input",
+        "messageKey": "CustomTime",
+        "defaultValue": -1,
+        "id": "custom_interval",
+        "label": "Custom Time",
+        "description": "How often you want characters to shuffle in given unit of time.",
+        "attributes": {
+          "placeholder": "Minutes (1-59), Hours (1-24)",
+          "min": 1,
+          "max": 60
+        }
+      },
+      {
+        "type": "input",
+        "messageKey": "RandomInterval",
+        "defaultValue": -1,
+        "id": "random_interval",
+        "group": "random_interval_group",
+        "label": "Random Interval"
+      }
+    ]
+  },
+  {
+    "type": "section",
+    "items": [
+      {
+        "type": "heading",
+        "defaultValue": "Spoiler Mode"
+      },
+      {
+        "type": "toggle",
+        "messageKey": "SpoilerMode",
+        "label": "Spoiler Mode",
+        "id": "spoiler",
+        "description": "Turn on to unlock characters that spoil the stories and characters of certain Professor Layton games. Only turn on if you are willing to see potential spoilers.",
+        "defaultValue": false
+      }
+    ]
+  },
+  {
+    "type": "submit",
+    "defaultValue": "Save Settings"
+  }
+]
