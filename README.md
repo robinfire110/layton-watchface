@@ -5,7 +5,7 @@ Professor Layton themed watchface for Pebble Time/Pebble Time Round
 http://apps.rebble.io/en_US/application/63ed5e8319ed6a00090984a1
 
 # Description
-This watchface is inspiried by the Professor Layton series, but more specifically Professor Layton's London Life. I made it since I am a big fan of the franchise and as a Pebble user, I thought a watchface was lacking. You can choose from 30 characters to appear on the watchface. In addition, there is also a random option that will shuffle through characters based on the time of day and on load. 
+This watchface is inspired by the Professor Layton series, but more specifically Professor Layton's London Life. I made it since I am a big fan of the franchise and as a Pebble user, I thought a watchface was lacking. You can choose from 30 characters to appear on the watchface. In addition, there is also a random option that will shuffle through characters based on the time of day and on load. 
 
 If you wish to install this watchface, please do so through the Rebble App Store link above.
 

@@ -30,12 +30,12 @@ static void update_time()
     case 4: strftime(d_buffer, sizeof(d_buffer), "%d/%m/%y", tick_time); break;
     case 5: strftime(d_buffer, sizeof(d_buffer), "%y/%m/%d", tick_time); break;
     case 6: strftime(d_buffer, sizeof(d_buffer), " ", tick_time); break;
+    case 7: strftime(d_buffer, sizeof(d_buffer), "%a, %b %d", tick_time); break;
   }
   
-  
   // Display this time on the TextLayer
-  //text_layer_set_text(s_time_layer, s_buffer);
-  //text_layer_set_text(s_date_layer, d_buffer);
+  text_layer_set_text(s_time_layer, s_buffer);
+  text_layer_set_text(s_date_layer, d_buffer);
 }
 
 //Checks for repeats and repeat characters (so there won't be more than one Layton, Luke or Randall)

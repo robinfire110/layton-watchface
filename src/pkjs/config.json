@@ -60,15 +60,19 @@
             "value": 2
           },
           {
-            "label": "MM/DD/YYYY",
+            "label": "Weekday, Month Day",
+            "value": 7
+          },
+          {
+            "label": "MM/DD/YY",
             "value": 3
           },
           {
-            "label": "DD/MM/YYYY",
+            "label": "DD/MM/YY",
             "value": 4
           },
           {
-            "label": "YYYY/MM/DD",
+            "label": "YY/MM/DD",
             "value": 5
           },
           {
