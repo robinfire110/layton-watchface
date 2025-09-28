@@ -1,6 +1,7 @@
 #include <pebble.h>
 
 #define SETTINGS_KEY 1
+#define CHARACTER_HEIGHT 84
 
 static Window* s_main_window;
 static TextLayer* s_time_layer;

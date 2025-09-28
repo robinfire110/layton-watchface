@@ -237,15 +237,15 @@ static void canvas_update_proc(Layer *layer, GContext *ctx)
     }
 
     //Set
-    bounds_array[0] = GRect(start, 80, image_width[0], 74);
-    bounds_array[1] = GRect(start+image_width[0]+padding, 80, image_width[1], 74);
-    bounds_array[2] = GRect(start+image_width[0]+image_width[1]+padding*2, 80, image_width[2], 74);
+    bounds_array[0] = GRect(start, CHARACTER_HEIGHT, image_width[0], 74);
+    bounds_array[1] = GRect(start+image_width[0]+padding, CHARACTER_HEIGHT, image_width[1], 74);
+    bounds_array[2] = GRect(start+image_width[0]+image_width[1]+padding*2, CHARACTER_HEIGHT, image_width[2], 74);
   #elif defined(PBL_ROUND)
     int r_start = (180-total_width)/2;
     printf("RoundStart: %d", r_start);
-    bounds_array[0] = GRect(r_start+padding, 80, image_width[0], 74);
-    bounds_array[1] = GRect(r_start+image_width[0]+padding*2, 80, image_width[1], 74);
-    bounds_array[2] = GRect(r_start+image_width[0]+image_width[1]+padding*3, 80, image_width[2], 74);
+    bounds_array[0] = GRect(r_start+padding, CHARACTER_HEIGHT, image_width[0], 74);
+    bounds_array[1] = GRect(r_start+image_width[0]+padding*2, CHARACTER_HEIGHT, image_width[1], 74);
+    bounds_array[2] = GRect(r_start+image_width[0]+image_width[1]+padding*3, CHARACTER_HEIGHT, image_width[2], 74);
   #endif
 
   
@@ -465,7 +465,7 @@ static void main_window_load(Window *window)
   /* Bluetooth */
   s_bluetooth_on_bitmap = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_BLUETOOTH_ON);
   s_bluetooth_off_bitmap = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_BLUETOOTH_OFF);
-  s_bluetooth_layer = bitmap_layer_create(GRect(PBL_IF_RECT_ELSE(59, 49), PBL_IF_RECT_ELSE(13, 20), bounds.size.w, 30));
+  s_bluetooth_layer = bitmap_layer_create(GRect(PBL_IF_RECT_ELSE(54, 49), PBL_IF_RECT_ELSE(14, 20), bounds.size.w, 30));
   bitmap_layer_set_bitmap(s_bluetooth_layer, s_bluetooth_on_bitmap);
   bitmap_layer_set_compositing_mode(s_bluetooth_layer, GCompOpSet);
   layer_add_child(window_layer, bitmap_layer_get_layer(s_bluetooth_layer));
@@ -527,7 +527,6 @@ static void main_window_unload(Window *window)
   gbitmap_destroy(s_bluetooth_on_bitmap);
   gbitmap_destroy(s_bluetooth_off_bitmap);
   for (int i = 0; i < 3; i++) {gbitmap_destroy(s_character_bitmap[i]);}
-  
 
   // Destroy BitmapLayer
   bitmap_layer_destroy(s_background_layer);
