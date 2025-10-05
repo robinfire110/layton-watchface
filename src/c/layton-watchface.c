@@ -195,7 +195,14 @@ static void canvas_update_proc(Layer *layer, GContext *ctx)
   int total_width = image_width[0] + image_width[1] + image_width[2] + (padding*4);
   int start = 8;
   int max_width;
-  PBL_IF_RECT_ELSE(max_width = 130, max_width = 150);
+  #if PBL_DISPLAY_HEIGHT == 228 
+    max_width = 180;
+  #elif PBL_DISPLAY_HEIGHT == 180 
+    max_width = 150;
+  #else
+    max_width = 130;
+  #endif
+  
   while (total_width >= max_width)
   {
     //Reduce
@@ -207,11 +214,13 @@ static void canvas_update_proc(Layer *layer, GContext *ctx)
     else if (start > 0)
     {
       //No need to reduce start if round
-      #if defined(PBL_ROUND)
+      #if PBL_DISPLAY_HEIGHT == 228 
+        break;
+      #elif PBL_DISPLAY_HEIGHT == 180 
         break;
       #endif
 
-      //Recude Start
+      //Reduce Start
       start -= 1;
       if (start <= 0)
       {
@@ -224,12 +233,16 @@ static void canvas_update_proc(Layer *layer, GContext *ctx)
 
     //Set
     int add_start;
-    PBL_IF_RECT_ELSE(add_start = (start-8), add_start = 0);
+    #if PBL_DISPLAY_HEIGHT == 168 
+      add_start = (start-8);
+    #else
+      add_start = 0;
+    #endif
     total_width = image_width[0] + image_width[1] + image_width[2] + (padding*4) + add_start;
   }
 
   //Set
-  #if defined(PBL_RECT)
+  #if PBL_DISPLAY_HEIGHT == 168 
     //Make sure image width is not 0 (if there is no one, make a slot)
     for (int i = 0; i < 3; i++)
     {
@@ -240,8 +253,8 @@ static void canvas_update_proc(Layer *layer, GContext *ctx)
     bounds_array[0] = GRect(start, CHARACTER_HEIGHT, image_width[0], 74);
     bounds_array[1] = GRect(start+image_width[0]+padding, CHARACTER_HEIGHT, image_width[1], 74);
     bounds_array[2] = GRect(start+image_width[0]+image_width[1]+padding*2, CHARACTER_HEIGHT, image_width[2], 74);
-  #elif defined(PBL_ROUND)
-    int r_start = (180-total_width)/2;
+  #else
+    int r_start = (PBL_DISPLAY_WIDTH-total_width)/2;
     printf("RoundStart: %d", r_start);
     bounds_array[0] = GRect(r_start+padding, CHARACTER_HEIGHT, image_width[0], 74);
     bounds_array[1] = GRect(r_start+image_width[0]+padding*2, CHARACTER_HEIGHT, image_width[1], 74);
@@ -452,7 +465,13 @@ static void main_window_load(Window *window)
 
   /* Background */
   // Create GBitmap
-  PBL_IF_RECT_ELSE(s_background_bitmap = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_BACKGROUND), s_background_bitmap = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_BACKGROUND_ROUND));
+  #if PBL_DISPLAY_HEIGHT == 228
+    s_background_bitmap = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_BACKGROUND_EMERY);
+  #elif PBL_DISPLAY_HEIGHT == 180
+    s_background_bitmap = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_BACKGROUND_ROUND);
+  #else
+    s_background_bitmap = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_BACKGROUND);
+  #endif
 
   // Create BitmapLayer to display the GBitmap
   s_background_layer = bitmap_layer_create(bounds);
@@ -465,7 +484,16 @@ static void main_window_load(Window *window)
   /* Bluetooth */
   s_bluetooth_on_bitmap = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_BLUETOOTH_ON);
   s_bluetooth_off_bitmap = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_BLUETOOTH_OFF);
-  s_bluetooth_layer = bitmap_layer_create(GRect(PBL_IF_RECT_ELSE(54, 49), PBL_IF_RECT_ELSE(14, 20), bounds.size.w, 30));
+
+  // Create GBitmap
+  #if PBL_DISPLAY_HEIGHT == 228 
+    s_bluetooth_layer = bitmap_layer_create(GRect(80, 25, bounds.size.w, 30));
+  #elif PBL_DISPLAY_HEIGHT == 180 
+    s_bluetooth_layer = bitmap_layer_create(GRect(46, 20, bounds.size.w, 30));
+  #else
+    s_bluetooth_layer = bitmap_layer_create(GRect(54, 14, bounds.size.w, 30));
+  #endif
+  
   bitmap_layer_set_bitmap(s_bluetooth_layer, s_bluetooth_on_bitmap);
   bitmap_layer_set_compositing_mode(s_bluetooth_layer, GCompOpSet);
   layer_add_child(window_layer, bitmap_layer_get_layer(s_bluetooth_layer));
@@ -488,13 +516,26 @@ static void main_window_load(Window *window)
 
   /* Time & Date */
   // Create the TextLayer with specific bounds (x, y)
-  s_time_layer = text_layer_create(GRect(PBL_IF_RECT_ELSE(11, 1), PBL_IF_RECT_ELSE(14, 20), bounds.size.w, 100));
-  s_date_layer = text_layer_create(GRect(PBL_IF_RECT_ELSE(11, 1), PBL_IF_RECT_ELSE(17, 23), bounds.size.w, 50));
+  #if PBL_DISPLAY_HEIGHT == 228 
+    s_time_layer = text_layer_create(GRect(2, 11, bounds.size.w, 100));
+    s_date_layer = text_layer_create(GRect(2, 15, bounds.size.w, 50));
+  #elif PBL_DISPLAY_HEIGHT == 180 
+    s_time_layer = text_layer_create(GRect(2, 20, bounds.size.w, 100));
+    s_date_layer = text_layer_create(GRect(1, 23, bounds.size.w, 50));
+  #else
+    s_time_layer = text_layer_create(GRect(10, 14, bounds.size.w, 100));
+    s_date_layer = text_layer_create(GRect(10, 17, bounds.size.w, 50));
+  #endif
 
   // Create GFont
-  s_time_font = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_LAYTON_48));
+  #if PBL_DISPLAY_HEIGHT == 228 
+    s_time_font = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_LAYTON_80));
+    s_date_font = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_LAYTON_32));
+  #else
+    s_time_font = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_LAYTON_48));
+    s_date_font = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_LAYTON_16));
+  #endif
   text_layer_set_font(s_time_layer, s_time_font); 
-  s_date_font = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_LAYTON_16));
   text_layer_set_font(s_date_layer, s_date_font); 
 
   // Set Layer Properties

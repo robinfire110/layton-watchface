@@ -1,7 +1,14 @@
 #include <pebble.h>
 
 #define SETTINGS_KEY 1
-#define CHARACTER_HEIGHT 84
+#if PBL_DISPLAY_HEIGHT == 228 
+  #define CHARACTER_HEIGHT 140
+#elif PBL_DISPLAY_HEIGHT == 180 
+  #define CHARACTER_HEIGHT 84
+#else
+  #define CHARACTER_HEIGHT 84
+#endif
+
 
 static Window* s_main_window;
 static TextLayer* s_time_layer;
