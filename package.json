@@ -80,17 +80,17 @@
         {
           "type": "bitmap",
           "name": "IMAGE_BACKGROUND",
-          "file": "images/background.png"
+          "file": "images/background_station_time.png"
         },
         {
           "type": "bitmap",
           "name": "IMAGE_BACKGROUND_ROUND",
-          "file": "images/background_round.png"
+          "file": "images/background_station_round.png"
         },
         {
           "type": "bitmap",
           "name": "IMAGE_BACKGROUND_EMERY",
-          "file": "images/background_emery_city_1.png"
+          "file": "images/background_station_emery.png"
         },
         {
           "type": "bitmap",

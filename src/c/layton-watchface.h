@@ -4,9 +4,9 @@
 #if PBL_DISPLAY_HEIGHT == 228 
   #define CHARACTER_HEIGHT 140
 #elif PBL_DISPLAY_HEIGHT == 180 
-  #define CHARACTER_HEIGHT 84
+  #define CHARACTER_HEIGHT 86
 #else
-  #define CHARACTER_HEIGHT 84
+  #define CHARACTER_HEIGHT 88
 #endif
 
 
