@@ -1,6 +1,15 @@
 #include <pebble.h>
 
 #define SETTINGS_KEY 1
+#define SPRITE_HEIGHT 76
+#if PBL_DISPLAY_HEIGHT == 228 
+  #define CHARACTER_HEIGHT 140
+#elif PBL_DISPLAY_HEIGHT == 180 
+  #define CHARACTER_HEIGHT 86
+#else
+  #define CHARACTER_HEIGHT 88
+#endif
+
 
 static Window* s_main_window;
 static TextLayer* s_time_layer;
@@ -23,6 +32,7 @@ typedef struct ClaySettings {
   bool VibrateOnDisconnect;
   int HourMode;
   int DateFormat;
+  int Background;
   int Character1;
   int Character2;
   int Character3;

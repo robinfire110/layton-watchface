@@ -88,6 +88,28 @@
     "items": [
       {
         "type": "heading",
+        "defaultValue": "Background Settings"
+      },
+      {
+        "type": "text",
+        "defaultValue": "Select the background."
+      },
+      {
+        "type": "select",
+        "messageKey": "Background",
+        "defaultValue": 0,
+        "label": "Background",
+        "options": [
+          { "label": "Random", "value": -1 }, { "label": "London 1", "value": 0 }, { "label": "London 2", "value": 1 }, { "label": "Central Station", "value": 2 }, { "label": "London Yard", "value": 3 }, { "label": "Granny Riddleton's Shack", "value": 4 }, { "label": "Casino", "value": 5 }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "section",
+    "items": [
+      {
+        "type": "heading",
         "defaultValue": "Character Settings"
       },
       {
@@ -164,7 +186,7 @@
         "defaultValue": false,
         "label": "Shuffle Based On Time",
         "id": "random_options",
-        "description": "Random characters will always shuffle when the watchface is reloaded. By turning this on, you can enable them to shuffle throughout the day based on the time."
+        "description": "Enable random characters to shuffle throughout the day based on the time. Note, random characters will always shuffle when the watchface is reloaded."
       },
       {
         "type": "select",

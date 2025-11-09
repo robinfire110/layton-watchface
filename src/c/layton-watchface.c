@@ -78,6 +78,46 @@ static bool check_repeat(int* array, int value)
   return false;
 }
 
+static void set_background()
+{
+  #if PBL_DISPLAY_HEIGHT == 228 //Time 2
+    uint32_t backgrounds[6] = {RESOURCE_ID_IMAGE_BACKGROUND_CITY1_EMERY,
+                RESOURCE_ID_IMAGE_BACKGROUND_CITY2_EMERY,
+                RESOURCE_ID_IMAGE_BACKGROUND_STATION_EMERY,
+                RESOURCE_ID_IMAGE_BACKGROUND_YARD_EMERY,
+                RESOURCE_ID_IMAGE_BACKGROUND_SHACK_EMERY,
+                RESOURCE_ID_IMAGE_BACKGROUND_CASINO_EMERY};
+  #elif PBL_DISPLAY_HEIGHT == 180 //Round
+    uint32_t backgrounds[6] = {RESOURCE_ID_IMAGE_BACKGROUND_CITY1_ROUND,
+                RESOURCE_ID_IMAGE_BACKGROUND_CITY2_ROUND,
+                RESOURCE_ID_IMAGE_BACKGROUND_STATION_ROUND,
+                RESOURCE_ID_IMAGE_BACKGROUND_YARD_ROUND,
+                RESOURCE_ID_IMAGE_BACKGROUND_SHACK_ROUND,
+                RESOURCE_ID_IMAGE_BACKGROUND_CASINO_ROUND};
+  #else
+    uint32_t backgrounds[6] = {RESOURCE_ID_IMAGE_BACKGROUND_CITY1_TIME,
+                RESOURCE_ID_IMAGE_BACKGROUND_CITY2_TIME,
+                RESOURCE_ID_IMAGE_BACKGROUND_STATION_TIME,
+                RESOURCE_ID_IMAGE_BACKGROUND_YARD_TIME,
+                RESOURCE_ID_IMAGE_BACKGROUND_SHACK_TIME,
+                RESOURCE_ID_IMAGE_BACKGROUND_CASINO_TIME};
+  #endif
+
+  //Check for random
+  int background_select = settings.Background;
+  if (settings.Background == -1)
+  {
+    int rand_num = rand() % 6;
+    background_select = rand_num;
+  }
+
+  //Redraw Background
+  if (s_background_bitmap) gbitmap_destroy(s_background_bitmap);
+  s_background_bitmap = gbitmap_create_with_resource(backgrounds[background_select]);
+  bitmap_layer_set_bitmap(s_background_layer, s_background_bitmap);
+  layer_mark_dirty(bitmap_layer_get_layer(s_background_layer));
+}
+
 static void set_characters()
 {
   uint32_t characters[30] = {RESOURCE_ID_IMAGE_LAYTON_NORMAL,
@@ -146,7 +186,7 @@ static void set_characters()
     }
 
     //Assign character
-    if (selected != 100)
+    if (selected != 100) //Check for empty (100)
     {
       //Random number
       if (selected == -1)
@@ -195,24 +235,33 @@ static void canvas_update_proc(Layer *layer, GContext *ctx)
   int total_width = image_width[0] + image_width[1] + image_width[2] + (padding*4);
   int start = 8;
   int max_width;
-  PBL_IF_RECT_ELSE(max_width = 130, max_width = 150);
+  #if PBL_DISPLAY_HEIGHT == 228 
+    max_width = 180;
+  #elif PBL_DISPLAY_HEIGHT == 180 
+    max_width = 150;
+  #else
+    max_width = 130;
+  #endif
+  
   while (total_width >= max_width)
   {
     //Reduce
-    if (padding > 1)
+    if (padding > 2)
     {
-      padding -= 1;
-      if (padding <= 1) padding = 1;
+      padding -= 2;
+      if (padding <= 2) padding = 2;
     }
     else if (start > 0)
     {
       //No need to reduce start if round
-      #if defined(PBL_ROUND)
+      #if PBL_DISPLAY_HEIGHT == 228 
+        break;
+      #elif PBL_DISPLAY_HEIGHT == 180 
         break;
       #endif
 
-      //Recude Start
-      start -= 1;
+      //Reduce Start
+      start -= 2;
       if (start <= 0)
       {
         start = 0;
@@ -224,12 +273,16 @@ static void canvas_update_proc(Layer *layer, GContext *ctx)
 
     //Set
     int add_start;
-    PBL_IF_RECT_ELSE(add_start = (start-8), add_start = 0);
+    #if PBL_DISPLAY_HEIGHT == 168 
+      add_start = (start-8);
+    #else
+      add_start = 0;
+    #endif
     total_width = image_width[0] + image_width[1] + image_width[2] + (padding*4) + add_start;
   }
 
   //Set
-  #if defined(PBL_RECT)
+  #if PBL_DISPLAY_HEIGHT == 168 
     //Make sure image width is not 0 (if there is no one, make a slot)
     for (int i = 0; i < 3; i++)
     {
@@ -237,15 +290,15 @@ static void canvas_update_proc(Layer *layer, GContext *ctx)
     }
 
     //Set
-    bounds_array[0] = GRect(start, 80, image_width[0], 74);
-    bounds_array[1] = GRect(start+image_width[0]+padding, 80, image_width[1], 74);
-    bounds_array[2] = GRect(start+image_width[0]+image_width[1]+padding*2, 80, image_width[2], 74);
-  #elif defined(PBL_ROUND)
-    int r_start = (180-total_width)/2;
+    bounds_array[0] = GRect(start, CHARACTER_HEIGHT, image_width[0], SPRITE_HEIGHT);
+    bounds_array[1] = GRect(start+image_width[0]+padding, CHARACTER_HEIGHT, image_width[1], SPRITE_HEIGHT);
+    bounds_array[2] = GRect(start+image_width[0]+image_width[1]+padding*2, CHARACTER_HEIGHT, image_width[2], SPRITE_HEIGHT);
+  #else
+    int r_start = (PBL_DISPLAY_WIDTH-total_width)/2;
     printf("RoundStart: %d", r_start);
-    bounds_array[0] = GRect(r_start+padding, 80, image_width[0], 74);
-    bounds_array[1] = GRect(r_start+image_width[0]+padding*2, 80, image_width[1], 74);
-    bounds_array[2] = GRect(r_start+image_width[0]+image_width[1]+padding*3, 80, image_width[2], 74);
+    bounds_array[0] = GRect(r_start+padding, CHARACTER_HEIGHT, image_width[0], SPRITE_HEIGHT);
+    bounds_array[1] = GRect(r_start+image_width[0]+padding*2, CHARACTER_HEIGHT, image_width[1], SPRITE_HEIGHT);
+    bounds_array[2] = GRect(r_start+image_width[0]+image_width[1]+padding*3, CHARACTER_HEIGHT, image_width[2], SPRITE_HEIGHT);
   #endif
 
   
@@ -264,9 +317,10 @@ static void prv_default_settings() {
   settings.VibrateOnDisconnect = true;
   settings.HourMode = 0;
   settings.DateFormat = 0;
-  settings.Character1 = 0;
-  settings.Character2 = 1;
-  settings.Character3 = 100;
+  settings.Background = 5;
+  settings.Character1 = 0; //0
+  settings.Character2 = 1; //1
+  settings.Character3 = 100; //100
   settings.Character1Spoiler = 0;
   settings.Character2Spoiler = 1;
   settings.Character3Spoiler = 100;
@@ -285,6 +339,7 @@ static void prv_load_settings() {
   //Update
   update_time();
   set_characters();
+  set_background();
   printf("previoussettings");
 }
 
@@ -315,6 +370,14 @@ static void inbox_received_callback(DictionaryIterator *iterator, void *context)
   if (data_t)
   {
     settings.DateFormat = atoi(data_t->value->cstring);
+  }
+
+  /* BACKGROUND */
+  Tuple *background_t = dict_find(iterator, MESSAGE_KEY_Background);
+  if (background_t)
+  {
+    int c = atoi(background_t->value->cstring);
+    settings.Background = c;
   }
 
   /* NORMAL CHARACTERS */
@@ -393,6 +456,7 @@ static void inbox_received_callback(DictionaryIterator *iterator, void *context)
 
   //Set Characters
   update_time();
+  set_background();
   set_characters();
 
   //Save Settings
@@ -452,7 +516,13 @@ static void main_window_load(Window *window)
 
   /* Background */
   // Create GBitmap
-  PBL_IF_RECT_ELSE(s_background_bitmap = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_BACKGROUND), s_background_bitmap = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_BACKGROUND_ROUND));
+  #if PBL_DISPLAY_HEIGHT == 228
+    s_background_bitmap = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_BACKGROUND_CITY1_EMERY);
+  #elif PBL_DISPLAY_HEIGHT == 180
+    s_background_bitmap = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_BACKGROUND_CITY1_ROUND);
+  #else
+    s_background_bitmap = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_BACKGROUND_CITY1_TIME);
+  #endif
 
   // Create BitmapLayer to display the GBitmap
   s_background_layer = bitmap_layer_create(bounds);
@@ -465,7 +535,16 @@ static void main_window_load(Window *window)
   /* Bluetooth */
   s_bluetooth_on_bitmap = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_BLUETOOTH_ON);
   s_bluetooth_off_bitmap = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_BLUETOOTH_OFF);
-  s_bluetooth_layer = bitmap_layer_create(GRect(PBL_IF_RECT_ELSE(59, 49), PBL_IF_RECT_ELSE(13, 20), bounds.size.w, 30));
+
+  // Create GBitmap
+  #if PBL_DISPLAY_HEIGHT == 228 
+    s_bluetooth_layer = bitmap_layer_create(GRect(80, 25, bounds.size.w, 30));
+  #elif PBL_DISPLAY_HEIGHT == 180 
+    s_bluetooth_layer = bitmap_layer_create(GRect(46, 20, bounds.size.w, 30));
+  #else
+    s_bluetooth_layer = bitmap_layer_create(GRect(54, 14, bounds.size.w, 30));
+  #endif
+  
   bitmap_layer_set_bitmap(s_bluetooth_layer, s_bluetooth_on_bitmap);
   bitmap_layer_set_compositing_mode(s_bluetooth_layer, GCompOpSet);
   layer_add_child(window_layer, bitmap_layer_get_layer(s_bluetooth_layer));
@@ -488,13 +567,26 @@ static void main_window_load(Window *window)
 
   /* Time & Date */
   // Create the TextLayer with specific bounds (x, y)
-  s_time_layer = text_layer_create(GRect(PBL_IF_RECT_ELSE(11, 1), PBL_IF_RECT_ELSE(14, 20), bounds.size.w, 100));
-  s_date_layer = text_layer_create(GRect(PBL_IF_RECT_ELSE(11, 1), PBL_IF_RECT_ELSE(17, 23), bounds.size.w, 50));
+  #if PBL_DISPLAY_HEIGHT == 228 
+    s_time_layer = text_layer_create(GRect(2, 11, bounds.size.w, 100));
+    s_date_layer = text_layer_create(GRect(2, 15, bounds.size.w, 50));
+  #elif PBL_DISPLAY_HEIGHT == 180 
+    s_time_layer = text_layer_create(GRect(2, 20, bounds.size.w, 100));
+    s_date_layer = text_layer_create(GRect(1, 23, bounds.size.w, 50));
+  #else
+    s_time_layer = text_layer_create(GRect(10, 14, bounds.size.w, 100));
+    s_date_layer = text_layer_create(GRect(10, 17, bounds.size.w, 50));
+  #endif
 
   // Create GFont
-  s_time_font = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_LAYTON_48));
+  #if PBL_DISPLAY_HEIGHT == 228 
+    s_time_font = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_LAYTON_80));
+    s_date_font = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_LAYTON_32));
+  #else
+    s_time_font = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_LAYTON_48));
+    s_date_font = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_LAYTON_16));
+  #endif
   text_layer_set_font(s_time_layer, s_time_font); 
-  s_date_font = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_LAYTON_16));
   text_layer_set_font(s_date_layer, s_date_font); 
 
   // Set Layer Properties
@@ -504,7 +596,7 @@ static void main_window_load(Window *window)
   text_layer_set_text_alignment(s_time_layer, GTextAlignmentCenter);
   text_layer_set_background_color(s_date_layer, GColorClear);
   text_layer_set_text_color(s_date_layer, GColorWhite);
-  text_layer_set_text(s_date_layer, "Jan 1, 2023");
+  text_layer_set_text(s_date_layer, "Jan 01, 2025");
   text_layer_set_text_alignment(s_date_layer, GTextAlignmentCenter);
 
   // Add it as a child layer to the Window's root layer
@@ -523,11 +615,10 @@ static void main_window_unload(Window *window)
   fonts_unload_custom_font(s_date_font);
 
   // Destroy GBitmap
-  gbitmap_destroy(s_background_bitmap);
-  gbitmap_destroy(s_bluetooth_on_bitmap);
-  gbitmap_destroy(s_bluetooth_off_bitmap);
-  for (int i = 0; i < 3; i++) {gbitmap_destroy(s_character_bitmap[i]);}
-  
+  if (s_background_bitmap) gbitmap_destroy(s_background_bitmap);
+  if (s_bluetooth_on_bitmap) gbitmap_destroy(s_bluetooth_on_bitmap);
+  if (s_bluetooth_off_bitmap) gbitmap_destroy(s_bluetooth_off_bitmap);
+  for (int i = 0; i < 3; i++) {if (s_character_bitmap[i]) gbitmap_destroy(s_character_bitmap[i]);}
 
   // Destroy BitmapLayer
   bitmap_layer_destroy(s_background_layer);
