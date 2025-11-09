@@ -1,7 +1,7 @@
 {
   "name": "layton-watchface",
   "author": "robinfire110",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "keywords": [
     "pebble-app"
   ],
@@ -29,6 +29,7 @@
       "VibrateOnDisconnect",
       "HourMode",
       "DateFormat",
+      "Background",
       "Character1",
       "Character2",
       "Character3",
@@ -79,18 +80,111 @@
         },
         {
           "type": "bitmap",
-          "name": "IMAGE_BACKGROUND",
-          "file": "images/background_station_time.png"
+          "name": "IMAGE_BACKGROUND_CITY1_TIME",
+          "file": "images/backgrounds/background_city1_time.png",
+          "targetPlatforms": ["basalt"]
         },
         {
           "type": "bitmap",
-          "name": "IMAGE_BACKGROUND_ROUND",
-          "file": "images/background_station_round.png"
+          "name": "IMAGE_BACKGROUND_CITY1_ROUND",
+          "file": "images/backgrounds/background_city1_round.png",
+          "targetPlatforms": ["chalk"]
         },
         {
           "type": "bitmap",
-          "name": "IMAGE_BACKGROUND_EMERY",
-          "file": "images/background_station_emery.png"
+          "name": "IMAGE_BACKGROUND_CITY1_EMERY",
+          "file": "images/backgrounds/background_city1_emery.png",
+          "targetPlatforms": ["emery"]
+        },
+        {
+          "type": "bitmap",
+          "name": "IMAGE_BACKGROUND_CITY2_TIME",
+          "file": "images/backgrounds/background_city2_time.png",
+          "targetPlatforms": ["basalt"]
+        },
+        {
+          "type": "bitmap",
+          "name": "IMAGE_BACKGROUND_CITY2_ROUND",
+          "file": "images/backgrounds/background_city2_round.png",
+          "targetPlatforms": ["chalk"]
+        },
+        {
+          "type": "bitmap",
+          "name": "IMAGE_BACKGROUND_CITY2_EMERY",
+          "file": "images/backgrounds/background_city2_emery.png",
+          "targetPlatforms": ["emery"]
+        },
+        {
+          "type": "bitmap",
+          "name": "IMAGE_BACKGROUND_STATION_TIME",
+          "file": "images/backgrounds/background_station_time.png",
+          "targetPlatforms": ["basalt"]
+        },
+        {
+          "type": "bitmap",
+          "name": "IMAGE_BACKGROUND_STATION_ROUND",
+          "file": "images/backgrounds/background_station_round.png",
+          "targetPlatforms": ["chalk"]
+        },
+        {
+          "type": "bitmap",
+          "name": "IMAGE_BACKGROUND_STATION_EMERY",
+          "file": "images/backgrounds/background_station_emery.png",
+          "targetPlatforms": ["emery"]
+        },
+        {
+          "type": "bitmap",
+          "name": "IMAGE_BACKGROUND_YARD_TIME",
+          "file": "images/backgrounds/background_yard_time.png",
+          "targetPlatforms": ["basalt"]
+        },
+        {
+          "type": "bitmap",
+          "name": "IMAGE_BACKGROUND_YARD_ROUND",
+          "file": "images/backgrounds/background_yard_round.png",
+          "targetPlatforms": ["chalk"]
+        },
+        {
+          "type": "bitmap",
+          "name": "IMAGE_BACKGROUND_YARD_EMERY",
+          "file": "images/backgrounds/background_yard_emery.png",
+          "targetPlatforms": ["emery"]
+        },
+        {
+          "type": "bitmap",
+          "name": "IMAGE_BACKGROUND_SHACK_TIME",
+          "file": "images/backgrounds/background_shack_time.png",
+          "targetPlatforms": ["basalt"]
+        },
+        {
+          "type": "bitmap",
+          "name": "IMAGE_BACKGROUND_SHACK_EMERY",
+          "file": "images/backgrounds/background_shack_emery.png",
+          "targetPlatforms": ["emery"]
+        },
+        {
+          "type": "bitmap",
+          "name": "IMAGE_BACKGROUND_CASINO_TIME",
+          "file": "images/backgrounds/background_casino_time.png",
+          "targetPlatforms": ["basalt"]
+        },
+        {
+          "type": "bitmap",
+          "name": "IMAGE_BACKGROUND_CASINO_ROUND",
+          "file": "images/backgrounds/background_casino_round.png",
+          "targetPlatforms": ["chalk"]
+        },
+        {
+          "type": "bitmap",
+          "name": "IMAGE_BACKGROUND_CASINO_EMERY",
+          "file": "images/backgrounds/background_casino_emery.png",
+          "targetPlatforms": ["emery"]
+        },
+        {
+          "type": "bitmap",
+          "name": "IMAGE_BACKGROUND_SHACK_ROUND",
+          "file": "images/backgrounds/background_shack_round.png",
+          "targetPlatforms": ["chalk"]
         },
         {
           "type": "bitmap",
@@ -105,210 +199,210 @@
         {
           "type": "bitmap",
           "name": "IMAGE_ANTON",
-          "file": "images/anton.png",
+          "file": "images/characters/anton.png",
           "memoryFormat": "8Bit",
           "spaceOptimization": "memory"
         },
         {
           "type": "bitmap",
           "name": "IMAGE_BARTON",
-          "file": "images/barton.png",
+          "file": "images/characters/barton.png",
           "memoryFormat": "8Bit",
           "spaceOptimization": "memory"
         },
         {
           "type": "bitmap",
           "name": "IMAGE_BOSTRO",
-          "file": "images/bostro.png",
+          "file": "images/characters/bostro.png",
           "memoryFormat": "8Bit",
           "spaceOptimization": "memory"
         },
         {
           "type": "bitmap",
           "name": "IMAGE_CHELMEY",
-          "file": "images/chelmey.png",
+          "file": "images/characters/chelmey.png",
           "memoryFormat": "8Bit",
           "spaceOptimization": "memory"
         },
         {
           "type": "bitmap",
           "name": "IMAGE_CLAIRE",
-          "file": "images/claire.png",
+          "file": "images/characters/claire.png",
           "memoryFormat": "8Bit",
           "spaceOptimization": "memory"
         },
         {
           "type": "bitmap",
           "name": "IMAGE_CLIVE",
-          "file": "images/clive.png",
+          "file": "images/characters/clive.png",
           "memoryFormat": "8Bit",
           "spaceOptimization": "memory"
         },
         {
           "type": "bitmap",
           "name": "IMAGE_DAHLIA",
-          "file": "images/dahlia.png",
+          "file": "images/characters/dahlia.png",
           "memoryFormat": "8Bit",
           "spaceOptimization": "memory"
         },
         {
           "type": "bitmap",
           "name": "IMAGE_DESCOLE",
-          "file": "images/descole.png",
+          "file": "images/characters/descole.png",
           "memoryFormat": "8Bit",
           "spaceOptimization": "memory"
         },
         {
           "type": "bitmap",
           "name": "IMAGE_DIMITRI",
-          "file": "images/dimitri.png",
+          "file": "images/characters/dimitri.png",
           "memoryFormat": "8Bit",
           "spaceOptimization": "memory"
         },
         {
           "type": "bitmap",
           "name": "IMAGE_DON",
-          "file": "images/donpaolo.png",
+          "file": "images/characters/donpaolo.png",
           "memoryFormat": "8Bit",
           "spaceOptimization": "memory"
         },
         {
           "type": "bitmap",
           "name": "IMAGE_EMMY",
-          "file": "images/emmy.png",
+          "file": "images/characters/emmy.png",
           "memoryFormat": "8Bit",
           "spaceOptimization": "memory"
         },
         {
           "type": "bitmap",
           "name": "IMAGE_FLORA",
-          "file": "images/flora.png",
+          "file": "images/characters/flora.png",
           "memoryFormat": "8Bit",
           "spaceOptimization": "memory"
         },
         {
           "type": "bitmap",
           "name": "IMAGE_GRANNY",
-          "file": "images/granny.png",
+          "file": "images/characters/granny.png",
           "memoryFormat": "8Bit",
           "spaceOptimization": "memory"
         },
         {
           "type": "bitmap",
           "name": "IMAGE_KATIA",
-          "file": "images/katia.png",
+          "file": "images/characters/katia.png",
           "memoryFormat": "8Bit",
           "spaceOptimization": "memory"
         },
         {
           "type": "bitmap",
           "name": "IMAGE_LAYTON_HATLESS",
-          "file": "images/layton_hatless.png",
+          "file": "images/characters/layton_hatless.png",
           "memoryFormat": "8Bit",
           "spaceOptimization": "memory"
         },
         {
           "type": "bitmap",
           "name": "IMAGE_LAYTON_MM",
-          "file": "images/layton_mm.png",
+          "file": "images/characters/layton_mm.png",
           "memoryFormat": "8Bit",
           "spaceOptimization": "memory"
         },
         {
           "type": "bitmap",
           "name": "IMAGE_LAYTON_NORMAL",
-          "file": "images/layton_normal.png",
+          "file": "images/characters/layton_normal.png",
           "memoryFormat": "8Bit",
           "spaceOptimization": "memory"
         },
         {
           "type": "bitmap",
           "name": "IMAGE_LAYTON_UF",
-          "file": "images/layton_uf.png",
+          "file": "images/characters/layton_uf.png",
           "memoryFormat": "8Bit",
           "spaceOptimization": "memory"
         },
         {
           "type": "bitmap",
           "name": "IMAGE_LEON",
-          "file": "images/leon.png",
+          "file": "images/characters/leon.png",
           "memoryFormat": "8Bit",
           "spaceOptimization": "memory"
         },
         {
           "type": "bitmap",
           "name": "IMAGE_LUKE_LS",
-          "file": "images/luke_ls.png",
+          "file": "images/characters/luke_ls.png",
           "memoryFormat": "8Bit",
           "spaceOptimization": "memory"
         },
         {
           "type": "bitmap",
           "name": "IMAGE_LUKE_MM",
-          "file": "images/luke_mm.png",
+          "file": "images/characters/luke_mm.png",
           "memoryFormat": "8Bit",
           "spaceOptimization": "memory"
         },
         {
           "type": "bitmap",
           "name": "IMAGE_LUKE_NORMAL",
-          "file": "images/luke_normal.png",
+          "file": "images/characters/luke_normal.png",
           "memoryFormat": "8Bit",
           "spaceOptimization": "memory"
         },
         {
           "type": "bitmap",
           "name": "IMAGE_MASKED",
-          "file": "images/masked_gentleman.png",
+          "file": "images/characters/masked_gentleman.png",
           "memoryFormat": "8Bit",
           "spaceOptimization": "memory"
         },
         {
           "type": "bitmap",
           "name": "IMAGE_MATTHEW",
-          "file": "images/matthew.png",
+          "file": "images/characters/matthew.png",
           "memoryFormat": "8Bit",
           "spaceOptimization": "memory"
         },
         {
           "type": "bitmap",
           "name": "IMAGE_PUZZLETTE",
-          "file": "images/puzzlette.png",
+          "file": "images/characters/puzzlette.png",
           "memoryFormat": "8Bit",
           "spaceOptimization": "memory"
         },
         {
           "type": "bitmap",
           "name": "IMAGE_RANDALL_NORMAL",
-          "file": "images/randall_normal.png",
+          "file": "images/characters/randall_normal.png",
           "memoryFormat": "8Bit",
           "spaceOptimization": "memory"
         },
         {
           "type": "bitmap",
           "name": "IMAGE_RANDALL_UNMASKED",
-          "file": "images/randall_unmasked.png",
+          "file": "images/characters/randall_unmasked.png",
           "memoryFormat": "8Bit",
           "spaceOptimization": "memory"
         },
         {
           "type": "bitmap",
           "name": "IMAGE_SCHRADER",
-          "file": "images/schrader.png",
+          "file": "images/characters/schrader.png",
           "memoryFormat": "8Bit",
           "spaceOptimization": "memory"
         },
         {
           "type": "bitmap",
           "name": "IMAGE_STACHEN",
-          "file": "images/stachen.png",
+          "file": "images/characters/stachen.png",
           "memoryFormat": "8Bit",
           "spaceOptimization": "memory"
         },
         {
           "type": "bitmap",
           "name": "IMAGE_SUBJECT3",
-          "file": "images/subject3.png",
+          "file": "images/characters/subject3.png",
           "memoryFormat": "8Bit",
           "spaceOptimization": "memory"
         }

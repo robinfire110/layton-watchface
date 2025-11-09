@@ -78,6 +78,46 @@ static bool check_repeat(int* array, int value)
   return false;
 }
 
+static void set_background()
+{
+  #if PBL_DISPLAY_HEIGHT == 228 //Time 2
+    uint32_t backgrounds[6] = {RESOURCE_ID_IMAGE_BACKGROUND_CITY1_EMERY,
+                RESOURCE_ID_IMAGE_BACKGROUND_CITY2_EMERY,
+                RESOURCE_ID_IMAGE_BACKGROUND_STATION_EMERY,
+                RESOURCE_ID_IMAGE_BACKGROUND_YARD_EMERY,
+                RESOURCE_ID_IMAGE_BACKGROUND_SHACK_EMERY,
+                RESOURCE_ID_IMAGE_BACKGROUND_CASINO_EMERY};
+  #elif PBL_DISPLAY_HEIGHT == 180 //Round
+    uint32_t backgrounds[6] = {RESOURCE_ID_IMAGE_BACKGROUND_CITY1_ROUND,
+                RESOURCE_ID_IMAGE_BACKGROUND_CITY2_ROUND,
+                RESOURCE_ID_IMAGE_BACKGROUND_STATION_ROUND,
+                RESOURCE_ID_IMAGE_BACKGROUND_YARD_ROUND,
+                RESOURCE_ID_IMAGE_BACKGROUND_SHACK_ROUND,
+                RESOURCE_ID_IMAGE_BACKGROUND_CASINO_ROUND};
+  #else
+    uint32_t backgrounds[6] = {RESOURCE_ID_IMAGE_BACKGROUND_CITY1_TIME,
+                RESOURCE_ID_IMAGE_BACKGROUND_CITY2_TIME,
+                RESOURCE_ID_IMAGE_BACKGROUND_STATION_TIME,
+                RESOURCE_ID_IMAGE_BACKGROUND_YARD_TIME,
+                RESOURCE_ID_IMAGE_BACKGROUND_SHACK_TIME,
+                RESOURCE_ID_IMAGE_BACKGROUND_CASINO_TIME};
+  #endif
+
+  //Check for random
+  int background_select = settings.Background;
+  if (settings.Background == -1)
+  {
+    int rand_num = rand() % 6;
+    background_select = rand_num;
+  }
+
+  //Redraw Background
+  if (s_background_bitmap) gbitmap_destroy(s_background_bitmap);
+  s_background_bitmap = gbitmap_create_with_resource(backgrounds[background_select]);
+  bitmap_layer_set_bitmap(s_background_layer, s_background_bitmap);
+  layer_mark_dirty(bitmap_layer_get_layer(s_background_layer));
+}
+
 static void set_characters()
 {
   uint32_t characters[30] = {RESOURCE_ID_IMAGE_LAYTON_NORMAL,
@@ -146,7 +186,7 @@ static void set_characters()
     }
 
     //Assign character
-    if (selected != 100)
+    if (selected != 100) //Check for empty (100)
     {
       //Random number
       if (selected == -1)
@@ -206,10 +246,10 @@ static void canvas_update_proc(Layer *layer, GContext *ctx)
   while (total_width >= max_width)
   {
     //Reduce
-    if (padding > 1)
+    if (padding > 2)
     {
-      padding -= 1;
-      if (padding <= 1) padding = 1;
+      padding -= 2;
+      if (padding <= 2) padding = 2;
     }
     else if (start > 0)
     {
@@ -221,7 +261,7 @@ static void canvas_update_proc(Layer *layer, GContext *ctx)
       #endif
 
       //Reduce Start
-      start -= 1;
+      start -= 2;
       if (start <= 0)
       {
         start = 0;
@@ -250,15 +290,15 @@ static void canvas_update_proc(Layer *layer, GContext *ctx)
     }
 
     //Set
-    bounds_array[0] = GRect(start, CHARACTER_HEIGHT, image_width[0], 74);
-    bounds_array[1] = GRect(start+image_width[0]+padding, CHARACTER_HEIGHT, image_width[1], 74);
-    bounds_array[2] = GRect(start+image_width[0]+image_width[1]+padding*2, CHARACTER_HEIGHT, image_width[2], 74);
+    bounds_array[0] = GRect(start, CHARACTER_HEIGHT, image_width[0], SPRITE_HEIGHT);
+    bounds_array[1] = GRect(start+image_width[0]+padding, CHARACTER_HEIGHT, image_width[1], SPRITE_HEIGHT);
+    bounds_array[2] = GRect(start+image_width[0]+image_width[1]+padding*2, CHARACTER_HEIGHT, image_width[2], SPRITE_HEIGHT);
   #else
     int r_start = (PBL_DISPLAY_WIDTH-total_width)/2;
     printf("RoundStart: %d", r_start);
-    bounds_array[0] = GRect(r_start+padding, CHARACTER_HEIGHT, image_width[0], 74);
-    bounds_array[1] = GRect(r_start+image_width[0]+padding*2, CHARACTER_HEIGHT, image_width[1], 74);
-    bounds_array[2] = GRect(r_start+image_width[0]+image_width[1]+padding*3, CHARACTER_HEIGHT, image_width[2], 74);
+    bounds_array[0] = GRect(r_start+padding, CHARACTER_HEIGHT, image_width[0], SPRITE_HEIGHT);
+    bounds_array[1] = GRect(r_start+image_width[0]+padding*2, CHARACTER_HEIGHT, image_width[1], SPRITE_HEIGHT);
+    bounds_array[2] = GRect(r_start+image_width[0]+image_width[1]+padding*3, CHARACTER_HEIGHT, image_width[2], SPRITE_HEIGHT);
   #endif
 
   
@@ -277,9 +317,10 @@ static void prv_default_settings() {
   settings.VibrateOnDisconnect = true;
   settings.HourMode = 0;
   settings.DateFormat = 0;
-  settings.Character1 = 0;
-  settings.Character2 = 1;
-  settings.Character3 = 100;
+  settings.Background = 5;
+  settings.Character1 = 0; //0
+  settings.Character2 = 1; //1
+  settings.Character3 = 100; //100
   settings.Character1Spoiler = 0;
   settings.Character2Spoiler = 1;
   settings.Character3Spoiler = 100;
@@ -298,6 +339,7 @@ static void prv_load_settings() {
   //Update
   update_time();
   set_characters();
+  set_background();
   printf("previoussettings");
 }
 
@@ -328,6 +370,14 @@ static void inbox_received_callback(DictionaryIterator *iterator, void *context)
   if (data_t)
   {
     settings.DateFormat = atoi(data_t->value->cstring);
+  }
+
+  /* BACKGROUND */
+  Tuple *background_t = dict_find(iterator, MESSAGE_KEY_Background);
+  if (background_t)
+  {
+    int c = atoi(background_t->value->cstring);
+    settings.Background = c;
   }
 
   /* NORMAL CHARACTERS */
@@ -406,6 +456,7 @@ static void inbox_received_callback(DictionaryIterator *iterator, void *context)
 
   //Set Characters
   update_time();
+  set_background();
   set_characters();
 
   //Save Settings
@@ -466,11 +517,11 @@ static void main_window_load(Window *window)
   /* Background */
   // Create GBitmap
   #if PBL_DISPLAY_HEIGHT == 228
-    s_background_bitmap = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_BACKGROUND_EMERY);
+    s_background_bitmap = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_BACKGROUND_CITY1_EMERY);
   #elif PBL_DISPLAY_HEIGHT == 180
-    s_background_bitmap = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_BACKGROUND_ROUND);
+    s_background_bitmap = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_BACKGROUND_CITY1_ROUND);
   #else
-    s_background_bitmap = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_BACKGROUND);
+    s_background_bitmap = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_BACKGROUND_CITY1_TIME);
   #endif
 
   // Create BitmapLayer to display the GBitmap
@@ -545,7 +596,7 @@ static void main_window_load(Window *window)
   text_layer_set_text_alignment(s_time_layer, GTextAlignmentCenter);
   text_layer_set_background_color(s_date_layer, GColorClear);
   text_layer_set_text_color(s_date_layer, GColorWhite);
-  text_layer_set_text(s_date_layer, "Jan 1, 2023");
+  text_layer_set_text(s_date_layer, "Jan 01, 2025");
   text_layer_set_text_alignment(s_date_layer, GTextAlignmentCenter);
 
   // Add it as a child layer to the Window's root layer
@@ -564,10 +615,10 @@ static void main_window_unload(Window *window)
   fonts_unload_custom_font(s_date_font);
 
   // Destroy GBitmap
-  gbitmap_destroy(s_background_bitmap);
-  gbitmap_destroy(s_bluetooth_on_bitmap);
-  gbitmap_destroy(s_bluetooth_off_bitmap);
-  for (int i = 0; i < 3; i++) {gbitmap_destroy(s_character_bitmap[i]);}
+  if (s_background_bitmap) gbitmap_destroy(s_background_bitmap);
+  if (s_bluetooth_on_bitmap) gbitmap_destroy(s_bluetooth_on_bitmap);
+  if (s_bluetooth_off_bitmap) gbitmap_destroy(s_bluetooth_off_bitmap);
+  for (int i = 0; i < 3; i++) {if (s_character_bitmap[i]) gbitmap_destroy(s_character_bitmap[i]);}
 
   // Destroy BitmapLayer
   bitmap_layer_destroy(s_background_layer);
