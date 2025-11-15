@@ -80,109 +80,109 @@
         },
         {
           "type": "bitmap",
-          "name": "IMAGE_BACKGROUND_CITY1_TIME",
+          "name": "IMAGE_BACKGROUND_CITY1",
           "file": "images/backgrounds/background_city1_time.png",
           "targetPlatforms": ["basalt"]
         },
         {
           "type": "bitmap",
-          "name": "IMAGE_BACKGROUND_CITY1_ROUND",
+          "name": "IMAGE_BACKGROUND_CITY1",
           "file": "images/backgrounds/background_city1_round.png",
           "targetPlatforms": ["chalk"]
         },
         {
           "type": "bitmap",
-          "name": "IMAGE_BACKGROUND_CITY1_EMERY",
+          "name": "IMAGE_BACKGROUND_CITY1",
           "file": "images/backgrounds/background_city1_emery.png",
           "targetPlatforms": ["emery"]
         },
         {
           "type": "bitmap",
-          "name": "IMAGE_BACKGROUND_CITY2_TIME",
+          "name": "IMAGE_BACKGROUND_CITY2",
           "file": "images/backgrounds/background_city2_time.png",
           "targetPlatforms": ["basalt"]
         },
         {
           "type": "bitmap",
-          "name": "IMAGE_BACKGROUND_CITY2_ROUND",
+          "name": "IMAGE_BACKGROUND_CITY2",
           "file": "images/backgrounds/background_city2_round.png",
           "targetPlatforms": ["chalk"]
         },
         {
           "type": "bitmap",
-          "name": "IMAGE_BACKGROUND_CITY2_EMERY",
+          "name": "IMAGE_BACKGROUND_CITY2",
           "file": "images/backgrounds/background_city2_emery.png",
           "targetPlatforms": ["emery"]
         },
         {
           "type": "bitmap",
-          "name": "IMAGE_BACKGROUND_STATION_TIME",
+          "name": "IMAGE_BACKGROUND_STATION",
           "file": "images/backgrounds/background_station_time.png",
           "targetPlatforms": ["basalt"]
         },
         {
           "type": "bitmap",
-          "name": "IMAGE_BACKGROUND_STATION_ROUND",
+          "name": "IMAGE_BACKGROUND_STATION",
           "file": "images/backgrounds/background_station_round.png",
           "targetPlatforms": ["chalk"]
         },
         {
           "type": "bitmap",
-          "name": "IMAGE_BACKGROUND_STATION_EMERY",
+          "name": "IMAGE_BACKGROUND_STATION",
           "file": "images/backgrounds/background_station_emery.png",
           "targetPlatforms": ["emery"]
         },
         {
           "type": "bitmap",
-          "name": "IMAGE_BACKGROUND_YARD_TIME",
+          "name": "IMAGE_BACKGROUND_YARD",
           "file": "images/backgrounds/background_yard_time.png",
           "targetPlatforms": ["basalt"]
         },
         {
           "type": "bitmap",
-          "name": "IMAGE_BACKGROUND_YARD_ROUND",
+          "name": "IMAGE_BACKGROUND_YARD",
           "file": "images/backgrounds/background_yard_round.png",
           "targetPlatforms": ["chalk"]
         },
         {
           "type": "bitmap",
-          "name": "IMAGE_BACKGROUND_YARD_EMERY",
+          "name": "IMAGE_BACKGROUND_YARD",
           "file": "images/backgrounds/background_yard_emery.png",
           "targetPlatforms": ["emery"]
         },
         {
           "type": "bitmap",
-          "name": "IMAGE_BACKGROUND_SHACK_TIME",
+          "name": "IMAGE_BACKGROUND_SHACK",
           "file": "images/backgrounds/background_shack_time.png",
           "targetPlatforms": ["basalt"]
         },
         {
           "type": "bitmap",
-          "name": "IMAGE_BACKGROUND_SHACK_EMERY",
+          "name": "IMAGE_BACKGROUND_SHACK",
           "file": "images/backgrounds/background_shack_emery.png",
           "targetPlatforms": ["emery"]
         },
         {
           "type": "bitmap",
-          "name": "IMAGE_BACKGROUND_CASINO_TIME",
+          "name": "IMAGE_BACKGROUND_CASINO",
           "file": "images/backgrounds/background_casino_time.png",
           "targetPlatforms": ["basalt"]
         },
         {
           "type": "bitmap",
-          "name": "IMAGE_BACKGROUND_CASINO_ROUND",
+          "name": "IMAGE_BACKGROUND_CASINO",
           "file": "images/backgrounds/background_casino_round.png",
           "targetPlatforms": ["chalk"]
         },
         {
           "type": "bitmap",
-          "name": "IMAGE_BACKGROUND_CASINO_EMERY",
+          "name": "IMAGE_BACKGROUND_CASINO",
           "file": "images/backgrounds/background_casino_emery.png",
           "targetPlatforms": ["emery"]
         },
         {
           "type": "bitmap",
-          "name": "IMAGE_BACKGROUND_SHACK_ROUND",
+          "name": "IMAGE_BACKGROUND_SHACK",
           "file": "images/backgrounds/background_shack_round.png",
           "targetPlatforms": ["chalk"]
         },

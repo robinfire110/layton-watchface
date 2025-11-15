@@ -80,28 +80,12 @@ static bool check_repeat(int* array, int value)
 
 static void set_background()
 {
-  #if PBL_DISPLAY_HEIGHT == 228 //Time 2
-    uint32_t backgrounds[6] = {RESOURCE_ID_IMAGE_BACKGROUND_CITY1_EMERY,
-                RESOURCE_ID_IMAGE_BACKGROUND_CITY2_EMERY,
-                RESOURCE_ID_IMAGE_BACKGROUND_STATION_EMERY,
-                RESOURCE_ID_IMAGE_BACKGROUND_YARD_EMERY,
-                RESOURCE_ID_IMAGE_BACKGROUND_SHACK_EMERY,
-                RESOURCE_ID_IMAGE_BACKGROUND_CASINO_EMERY};
-  #elif PBL_DISPLAY_HEIGHT == 180 //Round
-    uint32_t backgrounds[6] = {RESOURCE_ID_IMAGE_BACKGROUND_CITY1_ROUND,
-                RESOURCE_ID_IMAGE_BACKGROUND_CITY2_ROUND,
-                RESOURCE_ID_IMAGE_BACKGROUND_STATION_ROUND,
-                RESOURCE_ID_IMAGE_BACKGROUND_YARD_ROUND,
-                RESOURCE_ID_IMAGE_BACKGROUND_SHACK_ROUND,
-                RESOURCE_ID_IMAGE_BACKGROUND_CASINO_ROUND};
-  #else
-    uint32_t backgrounds[6] = {RESOURCE_ID_IMAGE_BACKGROUND_CITY1_TIME,
-                RESOURCE_ID_IMAGE_BACKGROUND_CITY2_TIME,
-                RESOURCE_ID_IMAGE_BACKGROUND_STATION_TIME,
-                RESOURCE_ID_IMAGE_BACKGROUND_YARD_TIME,
-                RESOURCE_ID_IMAGE_BACKGROUND_SHACK_TIME,
-                RESOURCE_ID_IMAGE_BACKGROUND_CASINO_TIME};
-  #endif
+  uint32_t backgrounds[6] = {RESOURCE_ID_IMAGE_BACKGROUND_CITY1,
+              RESOURCE_ID_IMAGE_BACKGROUND_CITY2,
+              RESOURCE_ID_IMAGE_BACKGROUND_STATION,
+              RESOURCE_ID_IMAGE_BACKGROUND_YARD,
+              RESOURCE_ID_IMAGE_BACKGROUND_SHACK,
+              RESOURCE_ID_IMAGE_BACKGROUND_CASINO};
 
   //Check for random
   int background_select = settings.Background;
@@ -295,7 +279,6 @@ static void canvas_update_proc(Layer *layer, GContext *ctx)
     bounds_array[2] = GRect(start+image_width[0]+image_width[1]+padding*2, CHARACTER_HEIGHT, image_width[2], SPRITE_HEIGHT);
   #else
     int r_start = (PBL_DISPLAY_WIDTH-total_width)/2;
-    printf("RoundStart: %d", r_start);
     bounds_array[0] = GRect(r_start+padding, CHARACTER_HEIGHT, image_width[0], SPRITE_HEIGHT);
     bounds_array[1] = GRect(r_start+image_width[0]+padding*2, CHARACTER_HEIGHT, image_width[1], SPRITE_HEIGHT);
     bounds_array[2] = GRect(r_start+image_width[0]+image_width[1]+padding*3, CHARACTER_HEIGHT, image_width[2], SPRITE_HEIGHT);
@@ -317,7 +300,7 @@ static void prv_default_settings() {
   settings.VibrateOnDisconnect = true;
   settings.HourMode = 0;
   settings.DateFormat = 0;
-  settings.Background = 5;
+  settings.Background = 0;
   settings.Character1 = 0; //0
   settings.Character2 = 1; //1
   settings.Character3 = 100; //100
@@ -470,10 +453,8 @@ static void tick_handler(struct tm *tick_time, TimeUnits units_changed)
   //Update character
   bool minute_check = !settings.RandomIntervalUnit && (tick_time->tm_min % settings.RandomInterval) == 0;
   bool hour_check = settings.RandomIntervalUnit && tick_time->tm_min == 0 && ((tick_time->tm_hour) % settings.RandomInterval) == 0;
-  printf("MC: %d, HC: %d", minute_check, hour_check);
   if (settings.RandomInterval >= 1 && (minute_check || hour_check)) 
   {
-    printf("tickhandler");
     set_characters();
   }  
 }
@@ -516,13 +497,7 @@ static void main_window_load(Window *window)
 
   /* Background */
   // Create GBitmap
-  #if PBL_DISPLAY_HEIGHT == 228
-    s_background_bitmap = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_BACKGROUND_CITY1_EMERY);
-  #elif PBL_DISPLAY_HEIGHT == 180
-    s_background_bitmap = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_BACKGROUND_CITY1_ROUND);
-  #else
-    s_background_bitmap = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_BACKGROUND_CITY1_TIME);
-  #endif
+  s_background_bitmap = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_BACKGROUND_CITY1);
 
   // Create BitmapLayer to display the GBitmap
   s_background_layer = bitmap_layer_create(bounds);
