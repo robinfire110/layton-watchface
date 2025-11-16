@@ -41,9 +41,16 @@ static void update_time()
 //Checks for repeats and repeat characters (so there won't be more than one Layton, Luke or Randall)
 static bool check_repeat(int* array, int value)
 {
-  int layton_array[] = {0, 19, 20, 27};
-  int luke_array[] = {1, 21, 24};
-  int randall_array[] = {26, 29};
+  #if defined(PBL_COLOR)
+    int layton_array[] = {0, 19, 20, 27};
+    int luke_array[] = {1, 21, 24};
+    int randall_array[] = {26, 29};
+  #else
+    //Currently aren't any repeats in B&W.
+    int layton_array[] = {0};
+    int luke_array[] = {1};
+    int randall_array[] = {10};
+  #endif
   for (int i = 0; i < 3; i++)
   {
     if (value == -1) { return false; }
@@ -80,134 +87,158 @@ static bool check_repeat(int* array, int value)
 
 static void set_background()
 {
-  uint32_t backgrounds[6] = {RESOURCE_ID_IMAGE_BACKGROUND_CITY1,
-              RESOURCE_ID_IMAGE_BACKGROUND_CITY2,
-              RESOURCE_ID_IMAGE_BACKGROUND_STATION,
-              RESOURCE_ID_IMAGE_BACKGROUND_YARD,
-              RESOURCE_ID_IMAGE_BACKGROUND_SHACK,
-              RESOURCE_ID_IMAGE_BACKGROUND_CASINO};
+  #if defined(PBL_COLOR)
+    uint32_t backgrounds[6] = {RESOURCE_ID_IMAGE_BACKGROUND_CITY1,
+                RESOURCE_ID_IMAGE_BACKGROUND_CITY2,
+                RESOURCE_ID_IMAGE_BACKGROUND_STATION,
+                RESOURCE_ID_IMAGE_BACKGROUND_YARD,
+                RESOURCE_ID_IMAGE_BACKGROUND_SHACK,
+                RESOURCE_ID_IMAGE_BACKGROUND_CASINO};
 
-  //Check for random
-  int background_select = settings.Background;
-  if (settings.Background == -1)
-  {
-    int rand_num = rand() % 6;
-    background_select = rand_num;
-  }
+    //Check for random
+    int background_select = settings.Background;
+    if (settings.Background == -1)
+    {
+      int rand_num = rand() % 6;
+      background_select = rand_num;
+    }
 
-  //Redraw Background
-  if (s_background_bitmap) gbitmap_destroy(s_background_bitmap);
-  s_background_bitmap = gbitmap_create_with_resource(backgrounds[background_select]);
-  bitmap_layer_set_bitmap(s_background_layer, s_background_bitmap);
-  layer_mark_dirty(bitmap_layer_get_layer(s_background_layer));
+    //Redraw Background
+    if (s_background_bitmap) gbitmap_destroy(s_background_bitmap);
+    s_background_bitmap = gbitmap_create_with_resource(backgrounds[background_select]);
+    bitmap_layer_set_bitmap(s_background_layer, s_background_bitmap);
+    layer_mark_dirty(bitmap_layer_get_layer(s_background_layer));
+  #else
+    //B&W Pebble
+    if (s_background_bitmap) gbitmap_destroy(s_background_bitmap);
+    s_background_bitmap = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_BACKGROUND_CITY1);
+    bitmap_layer_set_bitmap(s_background_layer, s_background_bitmap);
+    layer_mark_dirty(bitmap_layer_get_layer(s_background_layer));
+  #endif
 }
 
 static void set_characters()
 {
-  uint32_t characters[30] = {RESOURCE_ID_IMAGE_LAYTON_NORMAL,
-                RESOURCE_ID_IMAGE_LUKE_NORMAL,
-                RESOURCE_ID_IMAGE_FLORA,
-                RESOURCE_ID_IMAGE_DAHLIA,
-                RESOURCE_ID_IMAGE_MATTHEW,
-                RESOURCE_ID_IMAGE_CHELMEY,
-                RESOURCE_ID_IMAGE_BARTON,
-                RESOURCE_ID_IMAGE_DON,
-                RESOURCE_ID_IMAGE_STACHEN,
-                RESOURCE_ID_IMAGE_GRANNY,
-                RESOURCE_ID_IMAGE_SCHRADER,
-                RESOURCE_ID_IMAGE_KATIA,
-                RESOURCE_ID_IMAGE_ANTON,
-                RESOURCE_ID_IMAGE_DIMITRI,
-                RESOURCE_ID_IMAGE_BOSTRO,
-                RESOURCE_ID_IMAGE_SUBJECT3,
-                RESOURCE_ID_IMAGE_PUZZLETTE,
-                RESOURCE_ID_IMAGE_CLIVE,
-                RESOURCE_ID_IMAGE_CLAIRE,
-                RESOURCE_ID_IMAGE_LAYTON_UF,
-                RESOURCE_ID_IMAGE_LAYTON_HATLESS,
-                RESOURCE_ID_IMAGE_LUKE_LS,
-                RESOURCE_ID_IMAGE_EMMY,
-                RESOURCE_ID_IMAGE_DESCOLE,
-                RESOURCE_ID_IMAGE_LUKE_MM,
-                RESOURCE_ID_IMAGE_MASKED,
-                RESOURCE_ID_IMAGE_RANDALL_NORMAL,
-                RESOURCE_ID_IMAGE_LAYTON_MM,
-                RESOURCE_ID_IMAGE_LEON,
-                RESOURCE_ID_IMAGE_RANDALL_UNMASKED};
-  //Choice Arrays
-  int normal_mode[] = {0, 1, 2, 3, 4, 5, 6, 8, 9, 10, 11, 13, 14, 15, 16, 17, 20, 21, 22, 24, 25, 26, 27};
-  int spoiler_mode[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29};
-
-  //Set Characters
-  int repeat_array[] = {-1, -1, -1};
-  for (int i = 0; i < 3; i++)
-  {
-    //Destroy Old
-    if (s_character_bitmap[i])
+  #if defined(PBL_COLOR)
+    uint32_t characters[30] = {RESOURCE_ID_IMAGE_LAYTON_NORMAL,
+                  RESOURCE_ID_IMAGE_LUKE_NORMAL,
+                  RESOURCE_ID_IMAGE_FLORA,
+                  RESOURCE_ID_IMAGE_DAHLIA,
+                  RESOURCE_ID_IMAGE_MATTHEW,
+                  RESOURCE_ID_IMAGE_CHELMEY,
+                  RESOURCE_ID_IMAGE_BARTON,
+                  RESOURCE_ID_IMAGE_DON,
+                  RESOURCE_ID_IMAGE_STACHEN,
+                  RESOURCE_ID_IMAGE_GRANNY,
+                  RESOURCE_ID_IMAGE_SCHRADER,
+                  RESOURCE_ID_IMAGE_KATIA,
+                  RESOURCE_ID_IMAGE_ANTON,
+                  RESOURCE_ID_IMAGE_DIMITRI,
+                  RESOURCE_ID_IMAGE_BOSTRO,
+                  RESOURCE_ID_IMAGE_SUBJECT3,
+                  RESOURCE_ID_IMAGE_PUZZLETTE,
+                  RESOURCE_ID_IMAGE_CLIVE,
+                  RESOURCE_ID_IMAGE_CLAIRE,
+                  RESOURCE_ID_IMAGE_LAYTON_UF,
+                  RESOURCE_ID_IMAGE_LAYTON_HATLESS,
+                  RESOURCE_ID_IMAGE_LUKE_LS,
+                  RESOURCE_ID_IMAGE_EMMY,
+                  RESOURCE_ID_IMAGE_DESCOLE,
+                  RESOURCE_ID_IMAGE_LUKE_MM,
+                  RESOURCE_ID_IMAGE_MASKED,
+                  RESOURCE_ID_IMAGE_RANDALL_NORMAL,
+                  RESOURCE_ID_IMAGE_LAYTON_MM,
+                  RESOURCE_ID_IMAGE_LEON,
+                  RESOURCE_ID_IMAGE_RANDALL_UNMASKED};
+    //Choice Arrays
+    int normal_mode[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 14, 15, 16, 17, 20, 21, 22, 24, 25, 26, 27};
+    int spoiler_mode[] = {0, 1, 2, 3, 4, 5, 6, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29};
+  #else
+    uint32_t characters[11] = {RESOURCE_ID_IMAGE_LAYTON_NORMAL,
+                  RESOURCE_ID_IMAGE_LUKE_NORMAL,
+                  RESOURCE_ID_IMAGE_FLORA,
+                  RESOURCE_ID_IMAGE_CHELMEY,
+                  RESOURCE_ID_IMAGE_BARTON,
+                  RESOURCE_ID_IMAGE_DON,
+                  RESOURCE_ID_IMAGE_STACHEN,
+                  RESOURCE_ID_IMAGE_ANTON,
+                  RESOURCE_ID_IMAGE_EMMY,
+                  RESOURCE_ID_IMAGE_DESCOLE,
+                  RESOURCE_ID_IMAGE_MASKED};
+    //Choice Arrays
+    int normal_mode[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
+    int spoiler_mode[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
+  #endif
+    //Set Characters
+    int repeat_array[] = {-1, -1, -1};
+    for (int i = 0; i < 3; i++)
     {
-      gbitmap_destroy(s_character_bitmap[i]);
-      s_character_bitmap[i] = NULL;
-    } 
-
-    //Get character
-    int selected = -1;
-    switch (i)
-    {
-      case 0: 
-        if (settings.SpoilerMode) selected = settings.Character1Spoiler;
-        else selected = settings.Character1;  
-      break;
-
-       case 1: 
-        if (settings.SpoilerMode) selected = settings.Character2Spoiler;
-        else selected = settings.Character2;  
-      break;
-
-       case 2: 
-        if (settings.SpoilerMode) selected = settings.Character3Spoiler;
-        else selected = settings.Character3;  
-      break;
-    }
-
-    //Assign character
-    if (selected != 100) //Check for empty (100)
-    {
-      //Random number
-      if (selected == -1)
+      //Destroy Old
+      if (s_character_bitmap[i])
       {
-        
-        //Check for repeats
-        int rand_num;
-        while (true)
-        {
-          //Get correct array
-          if (settings.SpoilerMode)
-          {
-            rand_num = rand() % ((sizeof(spoiler_mode)/sizeof(spoiler_mode[0])-1));
-            rand_num = spoiler_mode[rand_num];
-          }
-          else
-          {
-            rand_num = rand() % ((sizeof(normal_mode)/sizeof(normal_mode[0])-1));
-            rand_num = normal_mode[rand_num];
-          }
+        if (s_character_bitmap[i]) gbitmap_destroy(s_character_bitmap[i]);
+        s_character_bitmap[i] = NULL;
+      } 
 
-          if (!check_repeat(repeat_array, rand_num))
-          {
-            break;
-          }
-        }
-        selected = rand_num;
+      //Get character
+      int selected = -1;
+      switch (i)
+      {
+        case 0: 
+          if (settings.SpoilerMode) selected = settings.Character1Spoiler;
+          else selected = settings.Character1;  
+        break;
+
+        case 1: 
+          if (settings.SpoilerMode) selected = settings.Character2Spoiler;
+          else selected = settings.Character2;  
+        break;
+
+        case 2: 
+          if (settings.SpoilerMode) selected = settings.Character3Spoiler;
+          else selected = settings.Character3;  
+        break;
       }
-      repeat_array[i] = selected;
 
-      //Set bitmap
-      s_character_bitmap[i] = gbitmap_create_with_resource(characters[selected]);
+      //Assign character
+      if (selected != 100) //Check for empty (100)
+      {
+        //Random number
+        if (selected == -1)
+        {
+          
+          //Check for repeats
+          int rand_num;
+          while (true)
+          {
+            //Get correct array
+            if (settings.SpoilerMode)
+            {
+              rand_num = rand() % ((sizeof(spoiler_mode)/sizeof(spoiler_mode[0])-1));
+              rand_num = spoiler_mode[rand_num];
+            }
+            else
+            {
+              rand_num = rand() % ((sizeof(normal_mode)/sizeof(normal_mode[0])-1));
+              rand_num = normal_mode[rand_num];
+            }
+
+            if (!check_repeat(repeat_array, rand_num))
+            {
+              break;
+            }
+          }
+          selected = rand_num;
+        }
+        repeat_array[i] = selected;
+
+        //Set bitmap
+        s_character_bitmap[i] = gbitmap_create_with_resource(characters[selected]);
+      }
     }
-  }
 
-  //Redraw Characters
-  layer_mark_dirty(s_character_layer);
+    //Redraw Characters
+    layer_mark_dirty(s_character_layer);
 }
 
 static void canvas_update_proc(Layer *layer, GContext *ctx) 
@@ -627,7 +658,7 @@ static void init() {
   app_message_register_inbox_dropped(inbox_dropped_callback);
   app_message_register_outbox_failed(outbox_failed_callback);
   app_message_register_outbox_sent(outbox_sent_callback);
-  app_message_open(128, 128);
+  app_message_open(64, 64);
 
   // Make sure the time is displayed from the start
   srand(time(NULL));
