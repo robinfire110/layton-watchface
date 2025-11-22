@@ -1,5 +1,5 @@
 # Professor Layton - Mini London (layton-watchface)
-A Professor Layton themed watchface for Pebble Time, Pebble Time Round and Pebble Time 2!
+A Professor Layton themed watchface for Pebble Time, Pebble Time Round, Pebble 2 Duo & Pebble Time 2!
 
 Created to fill the top hat shaped whole in the Pebble ecosystem.
 
@@ -16,6 +16,7 @@ http://apps.rebble.io/en_US/application/63ed5e8319ed6a00090984a1
   - Options for random characters and backgrounds.
   - Spoiler mode to hide any characters that may be considered spoilers.
 - Full support for all Pebble Time models (Time/Round/Time 2) with custom layouts to make the most of each watch model.
+- Limited support for Black & White Pebble 2 Duo, with limited character roster and fixed background.
 
 # Install
 If you wish to install this watchface on your Pebble, please do so through the [Rebble App Store](http://apps.rebble.io/en_US/application/63ed5e8319ed6a00090984a1).
