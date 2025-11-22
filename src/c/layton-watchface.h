@@ -27,6 +27,8 @@ static GBitmap* s_character_bitmap[3];
 static GFont s_time_font;
 static GFont s_date_font;
 
+bool update_character;
+
 /* Define Settings */
 typedef struct ClaySettings {
   bool VibrateOnDisconnect;

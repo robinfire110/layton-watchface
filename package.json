@@ -15,7 +15,6 @@
     "sdkVersion": "3",
     "enableMultiJS": true,
     "targetPlatforms": [
-      "aplite",
       "basalt",
       "chalk",
       "diorite",
@@ -51,7 +50,6 @@
           "type": "font",
           "name": "FONT_LAYTON_80",
           "file": "fonts/layton_font.ttf",
-          "compatibility": "2.7",
           "targetPlatforms": ["emery"]
         },
         {
@@ -59,23 +57,20 @@
           "type": "font",
           "name": "FONT_LAYTON_48",
           "file": "fonts/layton_font.ttf",
-          "compatibility": "2.7",
           "targetPlatforms": ["aplite", "basalt", "chalk", "diorite"]
         },
         {
-          "characterRegex": "[0-9,:A-Za-z ]",
+          "characterRegex": "[0-9,:/A-Za-z ]",
           "type": "font",
           "name": "FONT_LAYTON_32",
           "file": "fonts/layton_font.ttf",
-          "compatibility": "2.7",
           "targetPlatforms": ["emery"]
         },
         {
-          "characterRegex": "[0-9,:A-Za-z ]",
+          "characterRegex": "[0-9,:/A-Za-z ]",
           "type": "font",
           "name": "FONT_LAYTON_16",
           "file": "fonts/layton_font.ttf",
-          "compatibility": "2.7",
           "targetPlatforms": ["aplite", "basalt", "chalk", "diorite"]
         },
         {

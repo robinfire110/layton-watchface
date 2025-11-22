@@ -239,6 +239,7 @@ static void set_characters()
 
     //Redraw Characters
     layer_mark_dirty(s_character_layer);
+    update_character = true;
 }
 
 static void canvas_update_proc(Layer *layer, GContext *ctx) 
@@ -331,7 +332,7 @@ static void prv_default_settings() {
   settings.VibrateOnDisconnect = true;
   settings.HourMode = 0;
   settings.DateFormat = 0;
-  settings.Background = 0;
+  settings.Background = 0; //City 1
   settings.Character1 = 0; //0
   settings.Character2 = 1; //1
   settings.Character3 = 100; //100
@@ -484,10 +485,15 @@ static void tick_handler(struct tm *tick_time, TimeUnits units_changed)
   //Update character
   bool minute_check = !settings.RandomIntervalUnit && (tick_time->tm_min % settings.RandomInterval) == 0;
   bool hour_check = settings.RandomIntervalUnit && tick_time->tm_min == 0 && ((tick_time->tm_hour) % settings.RandomInterval) == 0;
-  if (settings.RandomInterval >= 1 && (minute_check || hour_check)) 
+  if (!update_character && settings.RandomInterval >= 1 && (minute_check || hour_check)) 
   {
     set_characters();
+    update_character = false;
   }  
+  else
+  {
+    update_character = false;  
+  }
 }
 
 static void bluetooth_callback(bool connected)
@@ -569,6 +575,7 @@ static void main_window_load(Window *window)
   {
     printf("reload");
     set_characters();
+    character_check = false;
   }
 
   /* Time & Date */
@@ -636,6 +643,7 @@ static void main_window_unload(Window *window)
 static void init() {
   // Create main Window element and assign to pointer
   s_main_window = window_create();
+  update_character = false;
 
   // Set handlers to manage the elements inside the Window
   window_set_window_handlers(s_main_window, (WindowHandlers) 
@@ -658,7 +666,7 @@ static void init() {
   app_message_register_inbox_dropped(inbox_dropped_callback);
   app_message_register_outbox_failed(outbox_failed_callback);
   app_message_register_outbox_sent(outbox_sent_callback);
-  app_message_open(64, 64);
+  app_message_open(128, 128);
 
   // Make sure the time is displayed from the start
   srand(time(NULL));
