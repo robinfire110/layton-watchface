@@ -103,8 +103,11 @@ module.exports = function(minified) {
     clayConfig.on(clayConfig.EVENTS.AFTER_BUILD, function() {
         //Spoiler Mode
         var spoilerModeToggle = clayConfig.getItemById('spoiler');
-        toggleSpoiler.call(spoilerModeToggle);
-        spoilerModeToggle.on('change', toggleSpoiler);
+        if (spoilerModeToggle)
+        {
+            toggleSpoiler.call(spoilerModeToggle);
+            spoilerModeToggle.on('change', toggleSpoiler);
+        }   
 
         //Character Shuffle
         var shuffleModeToggle = clayConfig.getItemById('random_options');

@@ -103,7 +103,8 @@
           { "label": "Random", "value": -1 }, { "label": "London 1", "value": 0 }, { "label": "London 2", "value": 1 }, { "label": "Central Station", "value": 2 }, { "label": "London Yard", "value": 3 }, { "label": "Granny Riddleton's Shack", "value": 4 }, { "label": "Casino", "value": 5 }
         ]
       }
-    ]
+    ],
+    "capabilities": ["COLOR"]
   },
   {
     "type": "section",
@@ -123,8 +124,9 @@
         "label": "Character Slot 1",
         "id": "cs1",
         "options": [
-          { "label": "Random", "value": -1 }, { "label": "Professor Layton", "value": 0 }, { "label": "Luke Triton", "value": 1 }, { "label": "Flora", "value": 2 }, { "label": "Dahlia Reinhold", "value": 3 }, { "label": "Matthew", "value": 4 }, { "label": "Inspector Chelmey", "value": 5 }, { "label": "Barton", "value": 6 }, { "label": "Stachenscarfen", "value": 8 }, { "label": "Granny Riddleton", "value": 9 }, { "label": "Dr. Schrader", "value": 10 }, { "label": "Katia Anderson", "value": 11 }, { "label": "Dr. Stahngun", "value": 13 }, { "label": "Bostro", "value": 14 }, { "label": "Subject 3", "value": 15 }, { "label": "Puzzlette", "value": 16 }, { "label": "Future Luke", "value": 17 }, { "label": "Professor Layton (Hatless)", "value": 20 }, { "label": "Luke Triton (Last Specter/Spectre's Call)", "value": 21 }, { "label": "Emmy Altava", "value": 22 }, { "label": "Luke Triton (Mircale Mask)", "value": 24 }, { "label": "Masked Gentleman", "value": 25 }, { "label": "Randall Ascot", "value": 26 }, { "label": "Young Layton (Miracle Mask)", "value": 27 }, { "label": "None", "value": 100 }
-        ]
+          { "label": "Random", "value": -1 }, { "label": "Professor Layton", "value": 0 }, { "label": "Luke Triton", "value": 1 }, { "label": "Flora", "value": 2 }, { "label": "Dahlia Reinhold", "value": 3 }, { "label": "Matthew", "value": 4 }, { "label": "Inspector Chelmey", "value": 5 }, { "label": "Barton", "value": 6 }, { "label": "Don Paolo", "value": 7 }, { "label": "Stachenscarfen", "value": 8 }, { "label": "Granny Riddleton", "value": 9 }, { "label": "Dr. Schrader", "value": 10 }, { "label": "Katia Anderson", "value": 11 }, { "label": "Dr. Stahngun", "value": 13 }, { "label": "Bostro", "value": 14 }, { "label": "Subject 3", "value": 15 }, { "label": "Puzzlette", "value": 16 }, { "label": "Future Luke", "value": 17 }, { "label": "Professor Layton (Hatless)", "value": 20 }, { "label": "Luke Triton (Last Specter/Spectre's Call)", "value": 21 }, { "label": "Emmy Altava", "value": 22 }, { "label": "Luke Triton (Mircale Mask)", "value": 24 }, { "label": "Masked Gentleman", "value": 25 }, { "label": "Randall Ascot", "value": 26 }, { "label": "Young Layton (Miracle Mask)", "value": 27 }, { "label": "None", "value": 100 }
+        ],
+        "capabilities": ["COLOR"]
       },
       {
         "type": "select",
@@ -133,8 +135,9 @@
         "label": "Character Slot 2",
         "id": "cs2",
         "options": [
-          { "label": "Random", "value": -1 }, { "label": "Professor Layton", "value": 0 }, { "label": "Luke Triton", "value": 1 }, { "label": "Flora", "value": 2 }, { "label": "Dahlia Reinhold", "value": 3 }, { "label": "Matthew", "value": 4 }, { "label": "Inspector Chelmey", "value": 5 }, { "label": "Barton", "value": 6 }, { "label": "Stachenscarfen", "value": 8 }, { "label": "Granny Riddleton", "value": 9 }, { "label": "Dr. Schrader", "value": 10 }, { "label": "Katia Anderson", "value": 11 }, { "label": "Dr. Stahngun", "value": 13 }, { "label": "Bostro", "value": 14 }, { "label": "Subject 3", "value": 15 }, { "label": "Puzzlette", "value": 16 }, { "label": "Future Luke", "value": 17 }, { "label": "Professor Layton (Hatless)", "value": 20 }, { "label": "Luke Triton (Last Specter/Spectre's Call)", "value": 21 }, { "label": "Emmy Altava", "value": 22 }, { "label": "Luke Triton (Mircale Mask)", "value": 24 }, { "label": "Masked Gentleman", "value": 25 }, { "label": "Randall Ascot", "value": 26 }, { "label": "Young Layton (Miracle Mask)", "value": 27 }, { "label": "None", "value": 100 }
-        ]
+          { "label": "Random", "value": -1 }, { "label": "Professor Layton", "value": 0 }, { "label": "Luke Triton", "value": 1 }, { "label": "Flora", "value": 2 }, { "label": "Dahlia Reinhold", "value": 3 }, { "label": "Matthew", "value": 4 }, { "label": "Inspector Chelmey", "value": 5 }, { "label": "Barton", "value": 6 }, { "label": "Don Paolo", "value": 7 }, { "label": "Stachenscarfen", "value": 8 }, { "label": "Granny Riddleton", "value": 9 }, { "label": "Dr. Schrader", "value": 10 }, { "label": "Katia Anderson", "value": 11 }, { "label": "Dr. Stahngun", "value": 13 }, { "label": "Bostro", "value": 14 }, { "label": "Subject 3", "value": 15 }, { "label": "Puzzlette", "value": 16 }, { "label": "Future Luke", "value": 17 }, { "label": "Professor Layton (Hatless)", "value": 20 }, { "label": "Luke Triton (Last Specter/Spectre's Call)", "value": 21 }, { "label": "Emmy Altava", "value": 22 }, { "label": "Luke Triton (Mircale Mask)", "value": 24 }, { "label": "Masked Gentleman", "value": 25 }, { "label": "Randall Ascot", "value": 26 }, { "label": "Young Layton (Miracle Mask)", "value": 27 }, { "label": "None", "value": 100 }
+        ],
+        "capabilities": ["COLOR"]
       },
       {
         "type": "select",
@@ -143,8 +146,42 @@
         "label": "Character Slot 3",
         "id": "cs3",
         "options": [
-          { "label": "Random", "value": -1 }, { "label": "Professor Layton", "value": 0 }, { "label": "Luke Triton", "value": 1 }, { "label": "Flora", "value": 2 }, { "label": "Dahlia Reinhold", "value": 3 }, { "label": "Matthew", "value": 4 }, { "label": "Inspector Chelmey", "value": 5 }, { "label": "Barton", "value": 6 }, { "label": "Stachenscarfen", "value": 8 }, { "label": "Granny Riddleton", "value": 9 }, { "label": "Dr. Schrader", "value": 10 }, { "label": "Katia Anderson", "value": 11 }, { "label": "Dr. Stahngun", "value": 13 }, { "label": "Bostro", "value": 14 }, { "label": "Subject 3", "value": 15 }, { "label": "Puzzlette", "value": 16 }, { "label": "Future Luke", "value": 17 }, { "label": "Professor Layton (Hatless)", "value": 20 }, { "label": "Luke Triton (Last Specter/Spectre's Call)", "value": 21 }, { "label": "Emmy Altava", "value": 22 }, { "label": "Luke Triton (Mircale Mask)", "value": 24 }, { "label": "Masked Gentleman", "value": 25 }, { "label": "Randall Ascot", "value": 26 }, { "label": "Young Layton (Miracle Mask)", "value": 27 }, { "label": "None", "value": 100 }
-        ]
+          { "label": "Random", "value": -1 }, { "label": "Professor Layton", "value": 0 }, { "label": "Luke Triton", "value": 1 }, { "label": "Flora", "value": 2 }, { "label": "Dahlia Reinhold", "value": 3 }, { "label": "Matthew", "value": 4 }, { "label": "Inspector Chelmey", "value": 5 }, { "label": "Barton", "value": 6 }, { "label": "Don Paolo", "value": 7 }, { "label": "Stachenscarfen", "value": 8 }, { "label": "Granny Riddleton", "value": 9 }, { "label": "Dr. Schrader", "value": 10 }, { "label": "Katia Anderson", "value": 11 }, { "label": "Dr. Stahngun", "value": 13 }, { "label": "Bostro", "value": 14 }, { "label": "Subject 3", "value": 15 }, { "label": "Puzzlette", "value": 16 }, { "label": "Future Luke", "value": 17 }, { "label": "Professor Layton (Hatless)", "value": 20 }, { "label": "Luke Triton (Last Specter/Spectre's Call)", "value": 21 }, { "label": "Emmy Altava", "value": 22 }, { "label": "Luke Triton (Mircale Mask)", "value": 24 }, { "label": "Masked Gentleman", "value": 25 }, { "label": "Randall Ascot", "value": 26 }, { "label": "Young Layton (Miracle Mask)", "value": 27 }, { "label": "None", "value": 100 }
+        ],
+        "capabilities": ["COLOR"]
+      },
+      {
+        "type": "select",
+        "messageKey": "Character1",
+        "defaultValue": 0,
+        "label": "Character Slot 1",
+        "id": "cs1",
+        "options": [
+          { "label": "Random", "value": -1 }, { "label": "Professor Layton", "value": 0 }, { "label": "Luke Triton", "value": 1 }, { "label": "Flora", "value": 2 }, { "label": "Inspector Chelmey", "value": 3 }, { "label": "Barton", "value": 4 }, { "label": "Don Paolo", "value": 5 }, { "label": "Stachenscarfen", "value": 6 }, { "label": "Anton", "value": 7 }, { "label": "Emmy Altava", "value": 8 }, { "label": "Descole", "value": 9 }, { "label": "Masked Gentleman", "value": 10 }, { "label": "None", "value": 100 }
+        ],
+        "capabilities": ["BW"]
+      },
+      {
+        "type": "select",
+        "messageKey": "Character2",
+        "defaultValue": 1,
+        "label": "Character Slot 2",
+        "id": "cs2",
+        "options": [
+          { "label": "Random", "value": -1 }, { "label": "Professor Layton", "value": 0 }, { "label": "Luke Triton", "value": 1 }, { "label": "Flora", "value": 2 }, { "label": "Inspector Chelmey", "value": 3 }, { "label": "Barton", "value": 4 }, { "label": "Don Paolo", "value": 5 }, { "label": "Stachenscarfen", "value": 6 }, { "label": "Anton", "value": 7 }, { "label": "Emmy Altava", "value": 8 }, { "label": "Descole", "value": 9 }, { "label": "Masked Gentleman", "value": 10 }, { "label": "None", "value": 100 }
+        ],
+        "capabilities": ["BW"]
+      },
+      {
+        "type": "select",
+        "messageKey": "Character3",
+        "defaultValue": 100,
+        "label": "Character Slot 3",
+        "id": "cs3",
+        "options": [
+          { "label": "Random", "value": -1 }, { "label": "Professor Layton", "value": 0 }, { "label": "Luke Triton", "value": 1 }, { "label": "Flora", "value": 2 }, { "label": "Inspector Chelmey", "value": 3 }, { "label": "Barton", "value": 4 }, { "label": "Don Paolo", "value": 5 }, { "label": "Stachenscarfen", "value": 6 }, { "label": "Anton", "value": 7 }, { "label": "Emmy Altava", "value": 8 }, { "label": "Descole", "value": 9 }, { "label": "Masked Gentleman", "value": 10 }, { "label": "None", "value": 100 }
+        ],
+        "capabilities": ["BW"]
       },
       {
         "type": "select",
@@ -154,7 +191,8 @@
         "id": "cs1_spoiler",
         "options": [
           { "label": "Random", "value": -1 }, { "label": "Professor Layton", "value": 0 }, { "label": "Luke Triton", "value": 1 }, { "label": "Flora Reinhold", "value": 2 }, { "label": "Dahlia Reinhold", "value": 3 }, { "label": "Matthew", "value": 4 }, { "label": "Inspector Chelmey", "value": 5 }, { "label": "Barton", "value": 6 }, { "label": "Don Paolo", "value": 7 }, { "label": "Stachenscarfen", "value": 8 }, { "label": "Granny Riddleton", "value": 9 }, { "label": "Dr. Schrader", "value": 10 }, { "label": "Katia Anderson", "value": 11 }, { "label": "Anton", "value": 12 }, { "label": "Dimitri Allen", "value": 13 }, { "label": "Bostro", "value": 14 }, { "label": "Subject 3", "value": 15 }, { "label": "Puzzlette", "value": 16 }, { "label": "Clive", "value": 17 }, { "label": "Claire", "value": 18 }, { "label": "Young Layton (Unwound Future/Lost Future)", "value": 19 }, { "label": "Professor Layton (Hatless)", "value": 20 }, { "label": "Luke Triton (Last Specter/Spectre's Call)", "value": 21 }, { "label": "Emmy Altava", "value": 22 }, { "label": "Descole", "value": 23 }, { "label": "Luke Triton (Mircale Mask)", "value": 24 }, { "label": "Masked Gentleman", "value": 25 }, { "label": "Randall Ascot", "value": 26 }, { "label": "Young Layton (Miracle Mask)", "value": 27 }, { "label": "Leon Bronev", "value": 28 }, { "label": "Randall Ascot (Unmasked)", "value": 29 }, { "label": "None", "value": 100 }
-        ]
+        ],
+        "capabilities": ["COLOR"]
       },
       {
         "type": "select",
@@ -164,7 +202,8 @@
         "id": "cs2_spoiler",
         "options": [
           { "label": "Random", "value": -1 }, { "label": "Professor Layton", "value": 0 }, { "label": "Luke Triton", "value": 1 }, { "label": "Flora Reinhold", "value": 2 }, { "label": "Dahlia Reinhold", "value": 3 }, { "label": "Matthew", "value": 4 }, { "label": "Inspector Chelmey", "value": 5 }, { "label": "Barton", "value": 6 }, { "label": "Don Paolo", "value": 7 }, { "label": "Stachenscarfen", "value": 8 }, { "label": "Granny Riddleton", "value": 9 }, { "label": "Dr. Schrader", "value": 10 }, { "label": "Katia Anderson", "value": 11 }, { "label": "Anton", "value": 12 }, { "label": "Dimitri Allen", "value": 13 }, { "label": "Bostro", "value": 14 }, { "label": "Subject 3", "value": 15 }, { "label": "Puzzlette", "value": 16 }, { "label": "Clive", "value": 17 }, { "label": "Claire", "value": 18 }, { "label": "Young Layton (Unwound Future/Lost Future)", "value": 19 }, { "label": "Professor Layton (Hatless)", "value": 20 }, { "label": "Luke Triton (Last Specter/Spectre's Call)", "value": 21 }, { "label": "Emmy Altava", "value": 22 }, { "label": "Descole", "value": 23 }, { "label": "Luke Triton (Mircale Mask)", "value": 24 }, { "label": "Masked Gentleman", "value": 25 }, { "label": "Randall Ascot", "value": 26 }, { "label": "Young Layton (Miracle Mask)", "value": 27 }, { "label": "Leon Bronev", "value": 28 }, { "label": "Randall Ascot (Unmasked)", "value": 29 }, { "label": "None", "value": 100 }
-        ]
+        ],
+        "capabilities": ["COLOR"]
       },
       {
         "type": "select",
@@ -174,7 +213,8 @@
         "id": "cs3_spoiler",
         "options": [
           { "label": "Random", "value": -1 }, { "label": "Professor Layton", "value": 0 }, { "label": "Luke Triton", "value": 1 }, { "label": "Flora Reinhold", "value": 2 }, { "label": "Dahlia Reinhold", "value": 3 }, { "label": "Matthew", "value": 4 }, { "label": "Inspector Chelmey", "value": 5 }, { "label": "Barton", "value": 6 }, { "label": "Don Paolo", "value": 7 }, { "label": "Stachenscarfen", "value": 8 }, { "label": "Granny Riddleton", "value": 9 }, { "label": "Dr. Schrader", "value": 10 }, { "label": "Katia Anderson", "value": 11 }, { "label": "Anton", "value": 12 }, { "label": "Dimitri Allen", "value": 13 }, { "label": "Bostro", "value": 14 }, { "label": "Subject 3", "value": 15 }, { "label": "Puzzlette", "value": 16 }, { "label": "Clive", "value": 17 }, { "label": "Claire", "value": 18 }, { "label": "Young Layton (Unwound Future/Lost Future)", "value": 19 }, { "label": "Professor Layton (Hatless)", "value": 20 }, { "label": "Luke Triton (Last Specter/Spectre's Call)", "value": 21 }, { "label": "Emmy Altava", "value": 22 }, { "label": "Descole", "value": 23 }, { "label": "Luke Triton (Mircale Mask)", "value": 24 }, { "label": "Masked Gentleman", "value": 25 }, { "label": "Randall Ascot", "value": 26 }, { "label": "Young Layton (Miracle Mask)", "value": 27 }, { "label": "Leon Bronev", "value": 28 }, { "label": "Randall Ascot (Unmasked)", "value": 29 }, { "label": "None", "value": 100 }
-        ]
+        ],
+        "capabilities": ["COLOR"]
       },
       {
         "type": "heading",
@@ -244,7 +284,8 @@
         "description": "Turn on to unlock characters that spoil the stories and characters of certain Professor Layton games. Only turn on if you are willing to see potential spoilers.",
         "defaultValue": false
       }
-    ]
+    ],
+    "capabilities": ["COLOR"]
   },
   {
     "type": "submit",
