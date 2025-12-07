@@ -609,7 +609,7 @@ static void main_window_load(Window *window)
   text_layer_set_text_alignment(s_time_layer, GTextAlignmentCenter);
   text_layer_set_background_color(s_date_layer, GColorClear);
   text_layer_set_text_color(s_date_layer, GColorWhite);
-  text_layer_set_text(s_date_layer, "Jan 01, 2025");
+  text_layer_set_text(s_date_layer, "Jan 01, 2026");
   text_layer_set_text_alignment(s_date_layer, GTextAlignmentCenter);
 
   // Add it as a child layer to the Window's root layer
