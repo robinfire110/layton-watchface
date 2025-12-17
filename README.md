@@ -3,8 +3,9 @@ A Professor Layton themed watchface for Pebble Time, Pebble Time Round, Pebble 2
 
 Created to fill the top hat shaped whole in the Pebble ecosystem.
 
-# Rebble App Store Link
-http://apps.rebble.io/en_US/application/63ed5e8319ed6a00090984a1
+# App Store Link
+Rebble - http://apps.rebble.io/en_US/application/63ed5e8319ed6a00090984a1
+RePebble - https://apps.repebble.com/en_US/application/63ed5e8319ed6a00090984a1
 
 # Features
 - Choose from more than 20 unique characters across the Professor Layton series to display.
