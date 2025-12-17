@@ -5,6 +5,7 @@ Created to fill the top hat shaped whole in the Pebble ecosystem.
 
 # App Store Link
 Rebble - http://apps.rebble.io/en_US/application/63ed5e8319ed6a00090984a1
+
 RePebble - https://apps.repebble.com/en_US/application/63ed5e8319ed6a00090984a1
 
 # Features
